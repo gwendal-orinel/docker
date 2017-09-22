@@ -4,7 +4,7 @@
 - Arm
 ```
 docker build https://github.com/gwendal-orinel/docker.git#master:apache2 -t apache2
-docker run -d --name=apache2 -h apache2 --restart=always -p 443:443 -p 80:80 -v /var/apache2/data/000-default.conf:/etc/apache2/sites-available/000-default.conf:z apache2
+docker run -d --name=apache2 -h apache2 --restart=always -p 443:443 -p 80:80 apache2
 ```
 
 ## Plex
@@ -32,4 +32,11 @@ docker run -d --name=sickrage -h sickrage --restart=always lsioarmhf/sickrage
 - Arm/x86/x64
 ```
 docker run -d --name=ui  -p 9000:9000 -e PUID=0 -e PGID=0 -v /var/run/docker.sock:/var/run/docker.sock -v /var/portainer/data:/data portainer/portainer
+```
+
+## Consul
+- Arm
+```
+docker build https://github.com/gwendal-orinel/docker.git#master:consul -t consul
+docker run -d --name=consul --restart=always -p 8300-8302:8300-8302/tcp -p 8300-8302:8300-8302/udp -p 8500:8500/tcp -p 8600:8600/tcp -p 8600:8600/udp -p 80:80 consul
 ```
