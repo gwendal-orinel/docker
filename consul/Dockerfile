@@ -1,5 +1,4 @@
 FROM resin/rpi-raspbian:latest
-ENTRYPOINT []
 
 EXPOSE 80 8600 8500
 EXPOSE 8600/udp
