@@ -3,6 +3,8 @@ ENTRYPOINT []
 
 EXPOSE 80 8600 8500
 EXPOSE 8600/udp
+EXPOSE 8300-8302
+EXPOSE 8301-8302/udp
 
 RUN apt-get update -y && \
         apt-get install -qy curl unzip apache2 && \
