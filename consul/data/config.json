@@ -1,0 +1,15 @@
+{
+    "bootstrap": true,
+    "ui": true,
+    "bind_addr" : "0.0.0.0",
+    "server" : true,
+    "leave_on_terminate" : true,
+    "skip_leave_on_interrupt" : false,
+    "enable_script_checks": true,
+    "client_addr": "0.0.0.0",
+    "datacenter" : "Docker_Odroid",
+    "data_dir" : "/consul/data/data",
+    "encrypt" : "DmFN7a6/IcQM58qbwsAAKw==",
+    "node_name": "Odroid",
+    "disable_update_check":true
+}
