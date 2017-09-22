@@ -8,6 +8,6 @@ RUN apt-get update -y && apt-get install -qy vim apache2
 RUN a2enmod proxy proxy_http rewrite
 
 VOLUME /data
-COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
+COPY data/000-default.conf /etc/apache2/sites-available/000-default.conf
 
 CMD /bin/bash -c "service apache2 start && tail -f /var/log/apache2/access.log"
