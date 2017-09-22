@@ -1,5 +1,4 @@
 FROM resin/rpi-raspbian:latest
-ENTRYPOINT []
 
 EXPOSE 80 443
 
