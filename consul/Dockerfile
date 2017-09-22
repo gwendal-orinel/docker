@@ -14,5 +14,7 @@ RUN apt-get update -y && \
 RUN a2enmod proxy proxy_http rewrite
 
 VOLUME /consul
+RUN chgrp -R 0 /consul && chmod -R g+rwX /consul
+COPY data/* /consul/
 
 CMD /bin/bash -c "service apache2 start && /bin/consul-template -template \"/consul/data/vhost.tmp:/etc/apache2/sites-available/000-default.conf:service apache2 restart\" & /bin/consul agent -config-file /consul/data/config.json -advertise-wan 192.168.0.19 -advertise 192.168.0.19"
