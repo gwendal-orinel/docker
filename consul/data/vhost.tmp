@@ -1,0 +1,20 @@
+<Directory /var/www/html>
+RewriteEngine On
+{{ range ls "endpoints" }}
+RewriteRule ^/?{{ .Key }}(.*)$         http://127.0.0.1:{{ .Value }}/$1 [L,P]
+{{ end }}
+</Directory>
+
+<VirtualHost *:80>
+        DocumentRoot /var/www/html
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+{{ range ls "ports" }}
+Listen {{ .Key }}
+<VirtualHost *:{{ .Key }}>
+        ProxyPass / {{ .Value }}
+        ProxyPassReverse / {{ .Value }}
+        ProxyPreserveHost On
+</VirtualHost>
+{{ end }}
