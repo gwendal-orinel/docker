@@ -31,7 +31,7 @@ docker run -d --name=sickrage -h sickrage --restart=always lsioarmhf/sickrage
 ## Portainer
 - Arm/x86/x64
 ```
-docker run -d --name=ui  -p 9000:9000 -e PUID=0 -e PGID=0 -v /var/run/docker.sock:/var/run/docker.sock -v /var/portainer/data:/data portainer/portainer
+docker run -d --name=ui  -p 9000:9000 -e PUID=0 -e PGID=0 -v /var/run/docker.sock:/var/run/docker.sock -v /data --restart=always portainer/portainer
 ```
 
 ## Consul
