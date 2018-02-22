@@ -10,22 +10,20 @@ docker run -d --name=apache2 -h apache2 --restart=always -p 1443:443 -p 80:80 ap
 ## Plex
 - Arm
 ```
-docker create --name=plex --net=host -e PUID=0 -e PGID=0 -v /var/plex/config:/config -v /var/plex/data:/data/tvshows -v /var/plex/data:/data/movies -v /var/plex/transcode:/transcode lsioarmhf/plex
-docker run -d --name=plex -h plex --restart=always lsioarmhf/plex
+docker run -d --restart=always --name=plex --net=host -e PUID=0 -e PGID=0 -v /var/plex/config:/config -v /var/plex/data:/data/tvshows -v /var/plex/data:/data/movies -v /var/plex/transcode:/transcode lsioarmhf/plex
 ```
 
 ## Transmission
 - Arm
 ```
-docker create --name=transmission -h transmission -v /var/transmission/config:/config -v /var/transmission/downloads:/downloads -v /var/transmission/watch:/watch -e PGID=0 -e PUID=0 -e TZ=FR -p 9091:9091 lsioarmhf/transmission
-docker run -d --name=transmission -h transmission --restart=always lsioarmhf/transmission
+docker run -d --name=transmission -h transmission --restart=always -v /var/transmission/config:/config -v /var/transmission/downloads:/downloads -v /var/transmission/watch:/watch -e PGID=0 -e PUID=0 -e TZ=FR -p 9091:9091 l
+sioarmhf/transmission
 ```
 
 ## Sickrage
 - Arm
 ```
-docker create --name=sickrage -v /var/transmission/downloads:/downloads -v /var/plex/data:/tv -v /var/sickrage/config:/config -e PGID=0 -e PUID=0 -e TZ=FR -p 8081:8081 lsioarmhf/sickrage
-docker run -d --name=sickrage -h sickrage --restart=always lsioarmhf/sickrage
+docker run -d --restart=always --name=sickrage -v /var/transmission/downloads:/downloads -v /var/plex/data:/tv -v /var/sickrage/config:/config -e PGID=0 -e PUID=0 -e TZ=FR -p 8081:8081 lsioarmhf/sickrage
 ```
 
 ## Portainer
