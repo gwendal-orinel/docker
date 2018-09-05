@@ -38,3 +38,10 @@ docker run -d --name=ui  -p 9000:9000 -e PUID=0 -e PGID=0 -v /var/run/docker.soc
 docker build https://github.com/gwendal-orinel/docker.git#master:consul -t consul
 docker run -d --name=consul --restart=always -p 8300-8302:8300-8302/tcp -p 8300-8302:8300-8302/udp -p 8500:8500/tcp -p 8600:8600/tcp -p 8600:8600/udp -p 80:80 consul
 ```
+
+## miniProxy
+- Arm
+```
+docker build https://github.com/gwendal-orinel/docker.git#master:proxy -t miniproxy
+docker run -d --name=proxy -h proxy --restart=always -p 80:80 miniproxy
+```
