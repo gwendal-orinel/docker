@@ -6,6 +6,6 @@ RUN apt-get update -y && apt-get install -qy curl vim apache2 libapache2-mod-php
 
 COPY data/* /var/www/html/
 
-ENTRYPOINT ["service apache2 restart &> /dev/null && bash "]
+ENTRYPOINT service apache2 restart && bash
 
-CMD ["curl localhost"]
+CMD curl localhost
