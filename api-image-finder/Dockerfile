@@ -4,7 +4,7 @@ EXPOSE 80
 
 RUN apt-get update -y && apt-get install -qy curl vim apache2 libapache2-mod-php php 
 
-COPY data/* /var/www/html/.
+COPY data/* /var/www/html/
 
 ENTRYPOINT [""]
 
