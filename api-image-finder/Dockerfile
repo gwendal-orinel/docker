@@ -8,4 +8,4 @@ COPY data/* /var/www/html/
 
 ENTRYPOINT ["/bin/bash","-c"] 
 
-CMD "service apache2 start &> /dev/null && curl localhost"
+CMD "\"service apache2 start &> /dev/null && curl localhost\""
