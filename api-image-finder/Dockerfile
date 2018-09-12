@@ -8,6 +8,6 @@ COPY data/* /var/www/html/
 
 RUN echo "/bin/bash -c \"service apache2 start &> /dev/null && curl -s localhost/\$(echo \"\$1\")\"" > /start.sh
 
-ENTRYPOINT ["bash","/start.sh"]
+#ENTRYPOINT ["bash","/start.sh"]
 
 CMD [""]
