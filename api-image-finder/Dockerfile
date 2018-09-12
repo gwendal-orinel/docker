@@ -8,4 +8,4 @@ COPY data/* /var/www/html/
 
 ENTRYPOINT [""]
 
-CMD ["service apache2 start && curl localhost/?"]
+CMD ["/usr/sbin/service apache2 start && /usr/bin/curl localhost/?"]
