@@ -1,6 +1,6 @@
 FROM resin/rpi-raspbian:latest
 
-EXPOSE 80 443
+EXPOSE 80 
 
 RUN apt-get update -y && apt-get install -qy vim apache2
 
