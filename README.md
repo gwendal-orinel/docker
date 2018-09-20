@@ -1,10 +1,10 @@
 # Docker deployements
 
-## Apache2
-- Arm
+## Reverse-proxy (Apache2)
+- Arm/x86
 ```
-docker build https://github.com/gwendal-orinel/docker.git#master:apache2 -t apache2
-docker run -d --name=apache2 -h apache2 --restart=always -p 1443:443 -p 80:80 apache2
+docker build https://github.com/gwendal-orinel/docker.git#master:reverse-proxy -t gorinel/reverse-proxy
+docker run -d --name=reverse-proxy -h reverse-proxy -e 'url=http://IP:PORT/' --restart=always -p 80:80 gorinel/reverse-proxy
 ```
 
 ## Plex
