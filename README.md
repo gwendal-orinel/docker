@@ -50,14 +50,14 @@ docker build https://github.com/gwendal-orinel/docker.git#master:consul -t consu
 docker run -d --name=consul --restart=always -p 8300-8302:8300-8302/tcp -p 8300-8302:8300-8302/udp -p 8500:8500/tcp -p 8600:8600/tcp -p 8600:8600/udp -p 80:80 consul
 ```
 
-## miniProxy
+## MiniProxy
 - Arm/x86/x64
 ```
 docker build https://github.com/gwendal-orinel/docker.git#master:proxy -t miniproxy
 docker run -d --name=proxy -h proxy --restart=always -p 80:80 miniproxy
 ```
 
-## api-image-finder
+## Api-image-finder
 - Arm/x86/x64
 ```
 docker build https://github.com/gwendal-orinel/docker.git#master:api-image-finder -t api-image-finder
@@ -68,4 +68,9 @@ docker run api-image-finder "?q=gwendal+orinel&count=1&format=json&engine=google
 - x86/64
 ```
 docker run -d -v /var/www/owncloud:/var/www/html -p 81:80 --restart=always --name owncloud owncloud
+```
+
+## Nextcloud
+```
+docker run -d --restart=always -p 80:80 -v nextcloud:/var/www/html --name nextcloud nextcloud
 ```
