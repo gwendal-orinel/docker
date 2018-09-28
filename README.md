@@ -8,7 +8,7 @@ docker run -d --name=apache-php -h apache-php --restart=always -p 80:80 -p 443:4
 
 ## MySql
 ```
-docker run -d --name mysql -h mysql --restart always -e MYSQL_ROOT_PASSWORD=password -v /var/docker/mysql:/var/lib/mysql mysql
+docker run --restart always --name mysql -e MYSQL_ROOT_PASSWORD=password -v mysql:/var/lib/mysql -d mysql:5.7
 ```
 
 ## Reverse-proxy (Apache2)
