@@ -52,3 +52,9 @@ docker run -d --name=proxy -h proxy --restart=always -p 80:80 miniproxy
 docker build https://github.com/gwendal-orinel/docker.git#master:api-image-finder -t api-image-finder
 docker run api-image-finder "?q=gwendal+orinel&count=1&format=json&engine=google"
 ```
+
+## OwnCloud
+- x86/64
+```
+docker run -d -v /var/www/owncloud:/var/www/html -p 81:80 --restart=always --name owncloud owncloud
+```
