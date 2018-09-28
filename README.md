@@ -1,9 +1,14 @@
 # Docker deployements
 
-## Apache-Php-Mysql
+## Apache-Php
 ```
-docker build https://github.com/gwendal-orinel/docker.git#master:apache-php-mysql -t gorinel/lamp
-docker run -d --name=lamp -h lamp -e 'MYSQL_PASS=PASSWORD' --restart=always -p 80:80 -p 443:443 gorinel/lamp
+docker build https://github.com/gwendal-orinel/docker.git#master:apache-php-mysql -t gorinel/apache-php
+docker run -d --name=apache-php -h apache-php -e 'MYSQL_PASS=PASSWORD' --restart=always -p 80:80 -p 443:443 gorinel/apache-php
+```
+
+## MySql
+```
+docker run -d --name mysql -h mysql --restart always -e MYSQL_ROOT_PASSWORD=password -v /var/docker/mysql:/var/lib/mysql mysql
 ```
 
 ## Reverse-proxy (Apache2)
