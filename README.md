@@ -3,7 +3,7 @@
 ## Apache-Php
 ```
 docker build https://github.com/gwendal-orinel/docker.git#master:apache-php-mysql -t gorinel/apache-php
-docker run -d --name=apache-php -h apache-php -e 'MYSQL_PASS=PASSWORD' --restart=always -p 80:80 -p 443:443 gorinel/apache-php
+docker run -d --name=apache-php -h apache-php --restart=always -p 80:80 -p 443:443 gorinel/apache-php
 ```
 
 ## MySql
