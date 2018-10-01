@@ -1,1 +1,17 @@
+image: 
+  name: debian:latest
+  entrypoint: [""]
+  
+variables:
+  VERSION: $CI_COMMIT_REF_NAME
+  DOC_DIR: documentation
 
+stages:
+  - loadapache2conf
+
+job-Apache2:
+  stage: loadapache2conf
+  tags: 
+    - runner1
+  script:
+    - docker build https://github.com/gwendal-orinel/docker.git#master:my_services_cloud -t gorinel/my_services_cloud
