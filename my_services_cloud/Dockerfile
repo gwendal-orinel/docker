@@ -2,7 +2,7 @@ FROM debian:latest
 
 EXPOSE 80 
 
-RUN apt-get update -y && apt-get install -qy vim apache2
+RUN apt-get update -y && apt-get install -qy vim apache2 wget
 
 RUN a2enmod proxy proxy_http
 
