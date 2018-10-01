@@ -79,3 +79,9 @@ docker run -d --restart=always -p 80:80 -v nextcloud:/var/www/html --name nextcl
 ```
 docker run -it -p 80:1880 -d --name mynodered nodered/node-red-docker
 ```
+
+## my_services_cloud
+```
+docker build https://github.com/gwendal-orinel/docker.git#master:my_services_cloud -t gorinel/my_services_cloud
+docker run -d --name=my_services_cloud -h my_services_cloud --restart=always -p 80:80 -p 8080:443 gorinel/my_services_cloud
+```
