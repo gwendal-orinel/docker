@@ -1,5 +1,8 @@
 image: docker:stable
 
+tags: 
+    - runner1
+
 before_script:
   - export DOCKER_HOST=$DOCKER_PORT
   - docker info
