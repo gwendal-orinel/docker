@@ -1,7 +1,7 @@
 image: docker:stable
 
 before_script:
-  - export DOCKER_HOST=$DOCKER_PORT
+  - export DOCKER_HOST="tcp://172.17.0.1:2375"
   - docker info
 
 build:
