@@ -1,13 +1,9 @@
 image: docker:stable
 
-tags: 
-    - runner1
-
-before_script:
-  - export DOCKER_HOST=$DOCKER_PORT
-  - docker info
-
 build:
   stage: build
+  tags: 
+    - runner1
   script:
+    - docker info
     - docker build https://github.com/gwendal-orinel/docker.git#master:my_services_cloud -t gorinel/my_services_cloud
