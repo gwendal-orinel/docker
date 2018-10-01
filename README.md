@@ -74,3 +74,8 @@ docker run -d -v /var/www/owncloud:/var/www/html -p 81:80 --restart=always --nam
 ```
 docker run -d --restart=always -p 80:80 -v nextcloud:/var/www/html --name nextcloud nextcloud
 ```
+
+## NodeRed
+```
+docker run -it -p 80:1880 -d --name mynodered nodered/node-red-docker
+```
