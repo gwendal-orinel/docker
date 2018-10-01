@@ -1,7 +1,7 @@
-image: debian:stable
+image: docker:stable
 
 before_script:
-  - apt-get update -y && apt-get install -qy git
+  - apk update && apk add git
   - git --version
 
 build:
@@ -9,5 +9,4 @@ build:
   tags: 
     - runner1
   script:
-    - docker info
     - docker build https://github.com/gwendal-orinel/docker.git#master:my_services_cloud -t gorinel/my_services_cloud
