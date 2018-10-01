@@ -1,7 +1,7 @@
-image: docker:stable
+image: debian:stable
 
 before_script:
-  - apk update && apk add git
+  - apt-get update -y && apt-get install -qy git
   - git --version
 
 build:
