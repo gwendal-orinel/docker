@@ -1,4 +1,4 @@
-FROM resin/rpi-raspbian:latest
+FROM debian:latest
 
 EXPOSE 80 
 
