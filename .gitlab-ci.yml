@@ -15,7 +15,6 @@ services-cloud:
   stage: publish
   tags: 
     - runner1
-  description: publish created services
   script:
     - docker rm -f my_services_cloud && docker rmi -f gorinel/my_services_cloud
     - docker build https://github.com/gwendal-orinel/docker.git#master:my_services_cloud -t gorinel/my_services_cloud
