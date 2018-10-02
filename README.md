@@ -12,7 +12,6 @@ docker run --restart always --name mysql -e MYSQL_ROOT_PASSWORD=password -v mysq
 ```
 
 ## Reverse-proxy (Apache2)
-- Arm/x86
 ```
 docker build https://github.com/gwendal-orinel/docker.git#master:reverse-proxy -t gorinel/reverse-proxy
 docker run -d --name=reverse-proxy -h reverse-proxy -e 'url=http://IP:PORT/' --restart=always -p 80:80 gorinel/reverse-proxy
@@ -38,7 +37,6 @@ docker run -d --restart=always --name=sickrage -v /var/transmission/downloads:/d
 ```
 
 ## Portainer
-- Arm/x86/x64
 ```
 docker run -d --name=ui  -p 9000:9000 -e PUID=0 -e PGID=0 -v /var/run/docker.sock:/var/run/docker.sock -v /data --restart=always portainer/portainer
 ```
@@ -51,23 +49,20 @@ docker run -d --name=consul --restart=always -p 8300-8302:8300-8302/tcp -p 8300-
 ```
 
 ## MiniProxy
-- Arm/x86/x64
 ```
 docker build https://github.com/gwendal-orinel/docker.git#master:proxy -t miniproxy
 docker run -d --name=proxy -h proxy --restart=always -p 80:80 miniproxy
 ```
 
 ## Api-image-finder
-- Arm/x86/x64
 ```
 docker build https://github.com/gwendal-orinel/docker.git#master:api-image-finder -t api-image-finder
 docker run api-image-finder "?q=gwendal+orinel&count=1&format=json&engine=google"
 ```
 
 ## OwnCloud
-- x86/64
 ```
-docker run -d -v /var/www/owncloud:/var/www/html -p 81:80 --restart=always --name owncloud owncloud
+docker run -d -v owncloud:/var/www/html -p 81:80 --restart=always --name owncloud owncloud
 ```
 
 ## Nextcloud
