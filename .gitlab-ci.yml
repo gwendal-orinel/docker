@@ -5,7 +5,7 @@ before_script:
   - git --version
 
 stages:
-  - my_services_cloud
+  #- my_services_cloud
   - apache-php
 
 
@@ -14,9 +14,6 @@ Job-my_services_cloud:
   stage: my_services_cloud
   tags: 
     - runner1
-    - my_services_cloud
-  only:
-    - tags
   script:
     - docker rm -f my_services_cloud && docker rmi -f gorinel/my_services_cloud
     - docker build https://github.com/gwendal-orinel/docker.git#master:my_services_cloud -t gorinel/my_services_cloud
@@ -28,9 +25,7 @@ Job-apache-php:
   stage: apache-php
   tags:
     - runner1
-    - apache-php
-  only:
-    - tags
   script:
+    - docker rm -f apache-php && docker rmi -f gorinel/apache-php
     - docker build https://github.com/gwendal-orinel/docker.git#master:apache-php -t gorinel/apache-php
     - docker run -d --name=apache-php -h apache-php --restart=always gorinel/apache-php
