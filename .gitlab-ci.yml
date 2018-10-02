@@ -4,20 +4,30 @@ before_script:
   - apk update && apk add git
   - git --version
 
-my_services_cloud:
-  stage: my_services_cloud
+stages:
+  - deploy-services-cloud
+  - deploy-apache-php
+
+services-cloud:
+  stage: deploy-services-cloud
   tags: 
     - runner1
   script:
     - docker rm -f my_services_cloud && docker rmi -f gorinel/my_services_cloud
     - docker build https://github.com/gwendal-orinel/docker.git#master:my_services_cloud -t gorinel/my_services_cloud
-    - docker run -d --name=my_services_cloud -h my_services_cloud --restart=always -p 80:80 -p 8080:443 gorinel/my_services_cloud   
+    - docker run -d --name=my_services_cloud -h my_services_cloud --restart=always -p 80:80 -p 8080:443 gorinel/my_services_cloud
+  only:
+    variables:
+      - $CI_COMMIT_MESSAGE =~ /update-services-cloud/
  
 apache-php:
-  stage: apache-php
+  stage: deploy-apache-php
   tags:
     - runner1
   script:
     - docker rm -f apache-php && docker rmi -f gorinel/apache-php
     - docker build https://github.com/gwendal-orinel/docker.git#master:apache-php -t gorinel/apache-php
     - docker run -d --name=apache-php -h apache-php --restart=always gorinel/apache-php
+  only:
+    variables:
+      - $CI_COMMIT_MESSAGE =~ /update-apache-php/
