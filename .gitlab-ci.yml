@@ -5,7 +5,7 @@ before_script:
   - git --version
 
 stages:
-  - apache-php
+  - Job-apache-php
 
 
 
