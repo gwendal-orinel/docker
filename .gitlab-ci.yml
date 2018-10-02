@@ -4,11 +4,6 @@ before_script:
   - apk update && apk add git
   - git --version
 
-stages:
-  - Job-apache-php
-
-
-
 Job-my_services_cloud:
   stage: my_services_cloud
   tags: 
@@ -16,9 +11,7 @@ Job-my_services_cloud:
   script:
     - docker rm -f my_services_cloud && docker rmi -f gorinel/my_services_cloud
     - docker build https://github.com/gwendal-orinel/docker.git#master:my_services_cloud -t gorinel/my_services_cloud
-    - docker run -d --name=my_services_cloud -h my_services_cloud --restart=always -p 80:80 -p 8080:443 gorinel/my_services_cloud
-   
-   
+    - docker run -d --name=my_services_cloud -h my_services_cloud --restart=always -p 80:80 -p 8080:443 gorinel/my_services_cloud   
  
 Job-apache-php:
   stage: apache-php
