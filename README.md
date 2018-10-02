@@ -80,3 +80,26 @@ docker run -it -p 80:1880 -d --name mynodered nodered/node-red-docker
 docker build https://github.com/gwendal-orinel/docker.git#master:my_services_cloud -t gorinel/my_services_cloud
 docker run -d --name=my_services_cloud -h my_services_cloud --restart=always -p 80:80 -p 8080:443 gorinel/my_services_cloud
 ```
+
+# Gitlab Runner
+## X86/X64 Runner
+# Install in Docker
+```
+docker run -d --name gitlab-runner --restart always -h gitlab-runner  -v /var/docker/gitlab-runner/config:/etc/gitlab-runner -v /var/run/docker.sock:/var/run/docker.sock   gitlab/gitlab-runner:latest
+```
+
+# Register
+```
+docker exec -it gitlab-runner gitlab-runner register -n --url https://gitlab.com/ --registration-token $CI_REGISTRATION_TOKEN   --executor docker --description "Runner X86/X64" --docker-image "docker:stable" --tag-list "runner" --docker-volumes /var/run/docker.sock:/var/run/docker.sock
+```
+
+## ARM Runner
+# Install in Docker
+```
+docker run -d --name arm-runner --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v /var/docker/gitlab-runner/config:/etc/gitlab-runner klud/gitlab-runner
+```
+
+# Register
+```
+docker exec -it arm-runner gitlab-runner register -n --url https://gitlab.com/ --registration-token $CI_REGISTRATION_TOKEN  --executor docker --description "Runner ARM" --docker-image "docker:stable" --tag-list "runner_arm" --docker-volumes /var/run/docker.sock:/var/run/docker.sock
+```
