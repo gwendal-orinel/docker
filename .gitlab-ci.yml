@@ -6,24 +6,23 @@ before_script:
 after_script:
   - docker rm -f $(docker ps -aq -f 'name=runner-')
 
-Job-test:
-  stage: test
-  tags: 
-    - runner1
-  script:
-    - echo $CI_PROJECT_DIR
+stages:
+  - deploy
+  - publish
 
 services-cloud:
-  stage: deploy
+  # publish created services
+  stage: publish
   tags: 
     - runner1
+  description: publish created services
   script:
     - docker rm -f my_services_cloud && docker rmi -f gorinel/my_services_cloud
     - docker build https://github.com/gwendal-orinel/docker.git#master:my_services_cloud -t gorinel/my_services_cloud
     - docker run -d --name=my_services_cloud -h my_services_cloud --restart=always -p 80:80 -p 8080:443 gorinel/my_services_cloud
   only:
     variables:
-      - $CI_COMMIT_MESSAGE =~ /update-services-cloud/
+      - $CI_COMMIT_MESSAGE =~ /update/
  
 apache-php:
   stage: deploy
