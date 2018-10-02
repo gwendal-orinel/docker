@@ -6,6 +6,13 @@ before_script:
 after_script:
   - docker rm -f $(docker ps -aq -f 'name=runner-')
 
+Job-test:
+  stage: test
+  tags: 
+    - runner1
+  script:
+    - echo $CI_PROJECT_DIR
+
 services-cloud:
   stage: deploy
   tags: 
