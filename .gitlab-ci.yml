@@ -4,12 +4,8 @@ before_script:
   - apk update && apk add git
   - git --version 
 
-stages:
-  - deploy-services-cloud
-  - deploy-apache-php
-
 services-cloud:
-  stage: deploy-services-cloud
+  stage: deploy
   tags: 
     - runner1
   script:
@@ -21,7 +17,7 @@ services-cloud:
       - $CI_COMMIT_MESSAGE =~ /update-services-cloud/
  
 apache-php:
-  stage: deploy-apache-php
+  stage: deploy
   tags:
     - runner1
   script:
