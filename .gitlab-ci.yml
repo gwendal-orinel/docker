@@ -1,7 +1,7 @@
 image: docker:stable
 
 before_script:
-  - apk update && apk add git
+  - apk update && apk add git jq
 
 after_script:
   - docker rm -f $(docker ps -aq -f 'name=runner-')
@@ -19,7 +19,11 @@ services-cloud:
   script:
     - docker rm -f my_services_cloud && docker rmi -f gorinel/my_services_cloud
     - docker build https://github.com/gwendal-orinel/docker.git#master:my_services_cloud -t gorinel/my_services_cloud
-    - docker run -d --name=my_services_cloud -h my_services_cloud --restart=always -p 80:80 -p 8080:443 gorinel/my_services_cloud
+    - export http_ports=$(for host in $(docker ps -q);do docker inspect $host | jq -r 'select(.[].NetworkSettings.Ports["80/tcp"] != null) | .[].NetworkSettings.Ports["80/tcp"][].HostPort' ;done)
+    - export https_ports=$(for host in $(docker ps -q);do docker inspect $host | jq -r 'select(.[].NetworkSettings.Ports["443/tcp"] != null) | .[].NetworkSettings.Ports["443/tcp"][].HostPort' ;done)
+    - export name_ports=$(for host in $(docker ps -q);do docker inspect $host | jq -r 'select(.[].NetworkSettings.Ports["80/tcp"] != null) | .[].Name' ;done)
+    - docker run -d --name=my_services_cloud -h my_services_cloud --restart=always -e http_ports="$http_ports" -e https_ports="$https_ports" -e name_ports="$name_ports" -p 80:80 -p 8080:443 gorinel/my_services_cloud
+    - docker exec my_services_cloud bash -c 'source ~/listing.sh > /var/www/html/index.html'
   only:
     variables:
       - $CI_COMMIT_MESSAGE =~ /update/
