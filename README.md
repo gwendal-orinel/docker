@@ -82,7 +82,7 @@ docker run -d --name=my_services_cloud -h my_services_cloud --restart=always -p 
 ```
 
 # Gitlab Runner
-## X86/X64 Runner
+## X86_64 Runner
 - Install in Docker
 ```
 docker run -d --name gitlab-runner --restart always -h gitlab-runner  -v /var/docker/gitlab-runner/config:/etc/gitlab-runner -v /var/run/docker.sock:/var/run/docker.sock   gitlab/gitlab-runner:latest
