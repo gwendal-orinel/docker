@@ -34,7 +34,7 @@ apache-php:
   script:
     - docker rm -f apache-php && docker rmi -f gorinel/apache-php
     - docker build https://github.com/gwendal-orinel/docker.git#master:apache-php -t gorinel/apache-php
-    - docker run -d --name=apache-php -h apache-php --restart=always gorinel/apache-php
+    - docker run -d --name=apache-php -h apache-php -P --restart=always gorinel/apache-php
   only:
     variables:
       - $CI_COMMIT_MESSAGE =~ /update-apache-php/
