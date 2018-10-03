@@ -6,7 +6,7 @@ names=($name_ports)
 i=0
 for http in $http_ports; do
 
-if [ "${name[i]:1}" == "folio"  ]; then
+if [ "${names[i]:1}" == "folio"  ]; then
 echo '
 <VirtualHost *:80> 
       ServerName "gwendal.orinel.net"
@@ -16,7 +16,7 @@ echo '
 </VirtualHost>'	
 fi
 
-if [ "${name[i]:1}" == "owncloud"  ]; then
+if [ "${names[i]:1}" == "owncloud"  ]; then
 echo '
 <VirtualHost *:80> 
       ServerName "cloud.orinel.net"
