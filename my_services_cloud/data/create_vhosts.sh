@@ -10,8 +10,8 @@ if [ "${names[i]:1}" == "folio"  ]; then
 echo '
 <VirtualHost *:80> 
       ServerName "gwendal.orinel.net"
-      ProxyPass / http://localhost:'$http'/
-      ProxyPassReverse / http://localhost:'$http'/
+      ProxyPass / http://172.17.0.1:'$http'/
+      ProxyPassReverse / http://172.17.0.1:'$http'/
       ProxyPreserveHost On
 </VirtualHost>'	
 fi
@@ -20,8 +20,8 @@ if [ "${names[i]:1}" == "owncloud"  ]; then
 echo '
 <VirtualHost *:80> 
       ServerName "cloud.orinel.net"
-      ProxyPass / http://localhost:'$http'/
-      ProxyPassReverse / http://localhost:'$http'/
+      ProxyPass / http://172.17.0.1:'$http'/
+      ProxyPassReverse / http://172.17.0.1:'$http'/
       ProxyPreserveHost On
 </VirtualHost>'	
 fi
