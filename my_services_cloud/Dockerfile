@@ -6,7 +6,6 @@ RUN apt-get update -y && apt-get install -qy wget vim apache2 libapache2-mod-php
 
 RUN a2enmod proxy proxy_http 
 
-#COPY data/000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY data/create_html.sh /var/create_html.sh
 COPY data/create_vhosts.sh /var/create_vhosts.sh
 
