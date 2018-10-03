@@ -5,14 +5,15 @@ echo '
 names=($name_ports)
 i=0
 for http in $http_ports; do
-if [ "${name[i]:1}" == "folio"  ]: then
-echo '
+     if [ "${name[i]:1}" == "folio"  ]: then
+     echo '
 <VirtualHost *:80> 
       ServerName "gwendal.orinel.net"
       ProxyPass / http://localhost:'$http'/
       ProxyPassReverse / http://localhost:'$http'/
       ProxyPreserveHost On
 </VirtualHost>'	
-fi
-i=$((i+1)) 
+     fi
+     
+i=$((i+1));
 done
