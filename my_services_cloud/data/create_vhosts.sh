@@ -2,7 +2,7 @@ echo '
 <VirtualHost *:80>
         DocumentRoot "/www/html"
 </VirtualHost>'
-names=($name_ports)
+names=($name_ports) 
 i=0
 for http in $http_ports; do
 
