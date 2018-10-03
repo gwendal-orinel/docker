@@ -7,7 +7,7 @@ i=0
 for http in $http_ports; do
 if [ "${name[i]:1}" == "folio"  ]: then
 echo '
-<VirtualHost *:80>
+<VirtualHost *:80> 
       ServerName "gwendal.orinel.net"
       ProxyPass / http://localhost:'$http'/
       ProxyPassReverse / http://localhost:'$http'/
