@@ -6,7 +6,7 @@ names=($name_ports)
 i=0
 for http in $http_ports; do
         echo ${names[i]:1}": <a target='_blank' href='http://cloudwatt.orinel.net:"$http"'>http://cloudwatt.orinel.net:"$http"</a></br>"
-        i=$((i+1))
+        i=$((i+1)) 
 done
 
 echo "\
