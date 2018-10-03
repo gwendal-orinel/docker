@@ -5,7 +5,7 @@ echo '
 names=($name_ports)
 i=0
 for http in $http_ports; do
-     if [ "${name[i]:1}" == "folio"  ]: then
+     if [ "${name[i]:1}" == "folio"  ]; then
      echo '
 <VirtualHost *:80> 
       ServerName "gwendal.orinel.net"
@@ -15,5 +15,5 @@ for http in $http_ports; do
 </VirtualHost>'	
      fi
      
-i=$((i+1));
+i=$((i+1))
 done
