@@ -13,7 +13,7 @@ echo "\
 <h1>Https Services:</h1>"
 i=0
 for https in $https_ports; do
-        echo ${names[i]:1}": <a target='_blank' href='https://cloudwatt.orinel.net:"$https"'>http://cloudwatt.orinel.net:"$https"</a></br>"
+        echo ${names[i]:1}": <a target='_blank' href='https://cloudwatt.orinel.net:"$https"'>https://cloudwatt.orinel.net:"$https"</a></br>"
         i=$((i+1))
 done
 
