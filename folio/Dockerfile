@@ -1,6 +1,6 @@
 FROM debian:latest
 
-EXPOSE 80 443
+EXPOSE 80 443 
 
 ENV bdd_user bdd_pass bdd_host
 
