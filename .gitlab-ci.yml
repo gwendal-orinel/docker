@@ -36,7 +36,7 @@ apache-php:
     - runner1
   script:
     - docker rm -f apache-php && docker rmi -f gorinel/apache-php
-    - docker build https://github.com/gwendal-orinel/docker.git#master:apache-php -t gorinel/apache-php
+    - docker build apache-php -t gorinel/apache-php
     - docker run -d --name=apache-php -h apache-php -p $(get_port):80 -p $(get_port):443 --restart=always gorinel/apache-php
   only:
     variables:
@@ -48,7 +48,7 @@ folio:
     - runner1
   script:
     - docker rm -f folio && docker rmi -f gorinel/folio
-    - docker build https://github.com/gwendal-orinel/docker.git#master:folio -t gorinel/folio
+    - docker build folio -t gorinel/folio
     - docker run -d --name=folio -h folio -p $(get_port):80 -p $(get_port):443 -e bdd_user=$BDD_USER -e bdd_pass=$BDD_PASS -e bdd_host=$BDD_HOST --restart=always gorinel/folio
     - docker exec folio bash -c 'echo -e "export BDD_USER=\"$bdd_user\"\nexport BDD_PASS=\"$bdd_pass\"\nexport BDD_HOST=\"$bdd_host\"" >> /etc/apache2/envvars'
     - docker restart folio 
