@@ -1,6 +1,6 @@
 echo '
 <VirtualHost *:80>
-        DocumentRoot "/www/html"
+        DocumentRoot "/var/www/html"
 </VirtualHost>'
 names=($name_ports) 
 i=0
