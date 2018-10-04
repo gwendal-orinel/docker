@@ -41,3 +41,15 @@ apache-php:
     variables:
       - $CI_COMMIT_MESSAGE =~ /update-apache-php/
       
+folio:
+  stage: deploy
+  tags:
+    - runner1
+  script:
+    - docker rm -f folio && docker rmi -f gorinel/folio
+    - docker build https://github.com/gwendal-orinel/docker.git#master:folio -t gorinel/folio
+    - docker run -d --name=folio -h folio -P --restart=always gorinel/folio
+  only:
+    variables:
+      - $CI_COMMIT_MESSAGE =~ /update-folio/
+      
