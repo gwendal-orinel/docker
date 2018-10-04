@@ -10,7 +10,7 @@ for http in $http_ports; do
 done
 
 echo "\
-<h1>Https Services:</h1>"
+<h1>Https services:</h1>"
 i=0
 for https in $https_ports; do
         echo ${names[i]:1}": <a target='_blank' href='https://cloudwatt.orinel.net:"$https"'>https://cloudwatt.orinel.net:"$https"</a></br>"
