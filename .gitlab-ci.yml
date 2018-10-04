@@ -52,7 +52,7 @@ folio:
     - docker exec folio bash -c 'echo -e "export BDD_USER=\"$bdd_user\"\nexport BDD_PASS=\"$bdd_pass\"\nexport BDD_HOST=\"$bdd_host\"" >> /etc/apache2/envvars'
     - docker restart folio 
     - docker cp folio/folio.sql mysql:/tmp/
-    - docker exec mysql bash -c 'mysql -h $BDD_HOST -u $BDD_USER -p$BDD_PASS folio < /tmp/folio.sql'
+    - docker exec mysql bash -c 'mysql -h localhost -u root -p$MYSQL_ROOT_PASSWORD < /tmp/folio.sql'
   only:
     variables:
       - $CI_COMMIT_MESSAGE =~ /update-folio/
