@@ -30,7 +30,7 @@ services-cloud:
       - $CI_COMMIT_MESSAGE =~ /update/
  
 apache-php:
-  stage: deploy
+  stage: deploy 
   tags:
     - runner1
   script:
