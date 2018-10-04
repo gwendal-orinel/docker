@@ -51,7 +51,6 @@ folio:
     - docker run -d --name=folio -h folio -P -e bdd_user=$BDD_USER -e bdd_pass=$BDD_PASS -e bdd_host=$BDD_HOST --restart=always gorinel/folio
     - docker exec folio bash -c 'echo -e "export BDD_USER=$bdd_user\nexport BDD_PASS=$bdd_pass\nexport BDD_HOST=$bdd_host" >> /etc/apache2/envvars'
     - docker restart folio
-    
   only:
     variables:
       - $CI_COMMIT_MESSAGE =~ /update-folio/
