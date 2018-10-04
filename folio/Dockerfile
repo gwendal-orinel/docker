@@ -2,7 +2,7 @@ FROM debian:latest
 
 EXPOSE 80 443 
 
-ENV bdd_user bdd_pass bdd_host
+#ENV bdd_user bdd_pass bdd_host
 
 RUN apt-get update -y && apt-get install -qy wget git vim apache2 libapache2-mod-php php php7.0-mbstring php-mysql
 
