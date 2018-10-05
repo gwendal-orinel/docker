@@ -12,11 +12,7 @@ if [ "${names[i]:1}" == "folio"  ]; then
 echo '
 <VirtualHost *:80> 
       ServerName "gwendal.orinel.net"
-      ProxyPass / http://172.17.0.1:'$http'/
-      ProxyPassReverse / http://172.17.0.1:'$http'/
-      ProxyPreserveHost On
-      ProxyPass /.well-known/acme-challenge/ http://172.17.0.1:9080/.well-known/acme-challenge/
-      ProxyPassReverse /.well-known/acme-challenge/ http://172.17.0.1:9080/.well-known/acme-challenge/
+      Redirect / https://gwendal.orinel.net/
 </VirtualHost>'	
 fi
 
@@ -24,11 +20,7 @@ if [ "${names[i]:1}" == "owncloud"  ]; then
 echo '
 <VirtualHost *:80> 
       ServerName "cloud.orinel.net"
-      ProxyPass / http://172.17.0.1:'$http'/
-      ProxyPassReverse / http://172.17.0.1:'$http'/
-      ProxyPreserveHost On
-      ProxyPass /.well-known/acme-challenge/ http://172.17.0.1:9080/.well-known/acme-challenge/
-      ProxyPassReverse /.well-known/acme-challenge/ http://172.17.0.1:9080/.well-known/acme-challenge/
+      Redirect / https://cloud.orinel.net/
 </VirtualHost>'	
 fi
      
