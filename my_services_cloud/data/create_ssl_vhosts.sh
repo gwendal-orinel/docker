@@ -2,7 +2,7 @@ echo '
 <IfModule mod_ssl.c>
 <VirtualHost *:8080>
       DocumentRoot "/var/www/html" 
-      Include /var/certbot/options-ssl-apache.conf
+      Include /etc/apache2/options-ssl-apache.conf
       SSLCertificateFile /var/certbot/live/cloudwatt.orinel.net/fullchain.pem
       SSLCertificateKeyFile /var/certbot/live/cloudwatt.orinel.net/privkey.pem
 </VirtualHost>'
@@ -19,7 +19,7 @@ echo '
       SSLProxyEngine on
       SSLProxyVerify none
       SSLProxyCheckPeerCN off
-      Include /var/certbot/options-ssl-apache.conf
+      Include /etc/apache2/options-ssl-apache.conf
       SSLCertificateFile /var/certbot/live/gwendal.orinel.net/fullchain.pem
       SSLCertificateKeyFile /var/certbot/live/gwendal.orinel.net/privkey.pem
 </VirtualHost>'	
@@ -34,7 +34,7 @@ echo '
       SSLProxyEngine on
       SSLProxyVerify none
       SSLProxyCheckPeerCN off
-      Include /var/certbot/options-ssl-apache.conf
+      Include /etc/apache2/options-ssl-apache.conf
       SSLCertificateFile /var/certbot/live/cloud.orinel.net/fullchain.pem
       SSLCertificateKeyFile /var/certbot/live/cloud.orinel.net/privkey.pem
 </VirtualHost>'	
