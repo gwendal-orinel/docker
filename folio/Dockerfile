@@ -8,6 +8,6 @@ RUN rm -r /var/www/html/* && git clone https://github.com/gwendal-orinel/Folio.g
 
 RUN echo "<Directory \"/var/www/html\" >\n AllowOverride All \n</Directory>" >> /etc/apache2/apache2.conf
 
-RUN a2enmod rewrite ssl
+RUN a2enmod rewrite ssl && a2ensite default-ssl
 
 CMD /bin/bash -c "service apache2 start && tail -f /var/log/apache2/access.log" 
