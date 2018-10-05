@@ -7,13 +7,15 @@ names=($name_ports)
 i=0
 for https in $https_ports; do
 
-if [ "${names[i]:1}" == "apache-php"  ]; then
+if [ "${names[i]:1}" == "folio"  ]; then
 echo '
 <VirtualHost *:8080> 
       ServerName "gwendal.orinel.net"
       ProxyPass / https://172.17.0.1:'$https'/
       ProxyPassReverse / https://172.17.0.1:'$https'/
-      ProxyPreserveHost On
+      SSLProxyEngine on
+      SSLProxyVerify none
+      SSLProxyCheckPeerCN off
 </VirtualHost>'	
 fi
 
@@ -23,7 +25,9 @@ echo '
       ServerName "cloud.orinel.net"
       ProxyPass / https://172.17.0.1:'$https'/
       ProxyPassReverse / https://172.17.0.1:'$https'/
-      ProxyPreserveHost On
+      SSLProxyEngine on
+      SSLProxyVerify none
+      SSLProxyCheckPeerCN off
 </VirtualHost>'	
 fi
   
