@@ -25,6 +25,7 @@ services-cloud:
     - docker run -d --name=my_services_cloud -h my_services_cloud --restart=always -e http_ports="$http_ports" -e https_ports="$https_ports" -e name_ports="$name_ports" -p 80:80 -p 8080:443 gorinel/my_services_cloud
     - docker exec my_services_cloud bash -c 'source /var/create_html.sh > /var/www/html/index.html'
     - docker exec my_services_cloud bash -c 'source /var/create_vhosts.sh > /etc/apache2/sites-available/000-default.conf'
+    - docker exec my_services_cloud bash -c 'source /var/create_ssl_vhosts.sh > /etc/apache2/sites-available/default-ssl.conf'
     - docker restart my_services_cloud
   only:
     variables:
