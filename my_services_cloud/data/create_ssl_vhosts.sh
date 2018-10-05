@@ -16,6 +16,9 @@ echo '
       SSLProxyEngine on
       SSLProxyVerify none
       SSLProxyCheckPeerCN off
+      Include /etc/apache2/options-ssl-apache.conf
+      SSLCertificateFile /var/certbot/live/gwendal.orinel.net/fullchain.pem
+      SSLCertificateKeyFile /var/certbot/live/gwendal.orinel.net/privkey.pem
 </VirtualHost>'	
 fi
 
