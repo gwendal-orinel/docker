@@ -7,6 +7,6 @@ RUN apt-get update -y && apt-get install -qy wget vim apache2 libapache2-mod-php
 RUN a2enmod proxy proxy_http ssl && a2ensite default-ssl 
 
 COPY data/*.sh /var/
-COPY data/options-ssl-apache.conf /var/certbot/options-ssl-apache.conf
+COPY data/options-ssl-apache.conf /etc/apache2/options-ssl-apache.conf
 
 CMD /bin/bash -c "service apache2 start && tail -f /var/log/apache2/access.log"
