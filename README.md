@@ -11,6 +11,12 @@ docker run -d --name=apache-php -h apache-php --restart=always -p 80:80 -p 443:4
 docker run --restart always --name mysql -e MYSQL_ROOT_PASSWORD=password -v mysql:/var/lib/mysql -d mysql:5.7
 ```
 
+## CertBot
+```
+docker build https://github.com/gwendal-orinel/docker.git#master:certbot -t gorinel/certbot
+docker run --rm --name=certbot -v certbot:/var/certbot -p 9080:80 gorinel/certbot
+```
+
 ## Reverse-proxy (Apache2)
 ```
 docker build https://github.com/gwendal-orinel/docker.git#master:reverse-proxy -t gorinel/reverse-proxy
@@ -102,10 +108,4 @@ docker run -d --name arm-runner --restart=always -v /var/run/docker.sock:/var/ru
 - Register
 ```
 docker exec -it arm-runner gitlab-runner register -n --url https://gitlab.com/ --registration-token $CI_REGISTRATION_TOKEN  --executor docker --description "Runner ARM" --docker-image "docker:stable" --tag-list "runner_arm" --docker-volumes /var/run/docker.sock:/var/run/docker.sock
-```
-
-## CertBot
-```
-docker build https://github.com/gwendal-orinel/docker.git#master:certbot -t gorinel/certbot
-docker run -d --name=certbot -h certbot -v certbot:/var/certbot --restart=always -p 9080:80 gorinel/certbot
 ```
