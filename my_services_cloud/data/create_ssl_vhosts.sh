@@ -7,7 +7,7 @@ names=($name_ports)
 i=0
 for http in $http_ports; do
 
-if [ "${names[i]:1}" == "folio"  ]; then
+if [ "${names[i]:1}" == "apache-php"  ]; then
 echo '
 <VirtualHost *:8080> 
       ServerName "gwendal.orinel.net"
