@@ -1,6 +1,8 @@
 echo '
 <VirtualHost *:80>
         DocumentRoot "/var/www/html"
+        ProxyPass /.well-known/acme-challenge/ http://172.17.0.1:9080/.well-known/acme-challenge/
+        ProxyPassReverse /.well-known/acme-challenge/ http://172.17.0.1:9080/.well-known/acme-challenge/
 </VirtualHost>'
 names=($name_ports) 
 i=0
@@ -13,6 +15,8 @@ echo '
       ProxyPass / http://172.17.0.1:'$http'/
       ProxyPassReverse / http://172.17.0.1:'$http'/
       ProxyPreserveHost On
+      ProxyPass /.well-known/acme-challenge/ http://172.17.0.1:9080/.well-known/acme-challenge/
+      ProxyPassReverse /.well-known/acme-challenge/ http://172.17.0.1:9080/.well-known/acme-challenge/
 </VirtualHost>'	
 fi
 
@@ -23,6 +27,8 @@ echo '
       ProxyPass / http://172.17.0.1:'$http'/
       ProxyPassReverse / http://172.17.0.1:'$http'/
       ProxyPreserveHost On
+      ProxyPass /.well-known/acme-challenge/ http://172.17.0.1:9080/.well-known/acme-challenge/
+      ProxyPassReverse /.well-known/acme-challenge/ http://172.17.0.1:9080/.well-known/acme-challenge/
 </VirtualHost>'	
 fi
      
