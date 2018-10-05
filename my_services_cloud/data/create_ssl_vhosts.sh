@@ -27,6 +27,7 @@ echo '
 </VirtualHost>'	
 fi
   
-echo '</IfModule>'
 i=$((i+1))
 done
+
+echo '</IfModule>'
