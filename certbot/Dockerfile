@@ -1,10 +1,8 @@
-FROM debian:latest
+FROM certbot/certbot
 
 EXPOSE 80 443
 
-RUN apt-get update -y && apt-get install -qy wget 
+COPY data/options-ssl-apache.conf /etc/apache2/options-ssl-apache.conf
 
-RUN wget https://dl.eff.org/certbot-auto && chmod a+x certbot-auto
-
-ENTRYPOINT ./certbot-auto certonly --test-cert --standalone -n --agree-tos -m gwendal@orinel.net --work-dir /var/certbot --logs-dir /var/certbot --config-dir /var/certbot --preferred-challenges http-01  
+# ./certbot-auto certonly --test-cert --standalone -n --agree-tos -m gwendal@orinel.net --work-dir /var/certbot --logs-dir /var/certbot --config-dir /var/certbot --preferred-challenges http-01  
 CMD ["--help"]
