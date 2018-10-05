@@ -34,7 +34,7 @@ docker run -d --restart=always --name=plex --net=host -e PUID=0 -e PGID=0 -v /va
 docker run -d --name=transmission -h transmission --restart=always -v /var/transmission/config:/config -v /var/transmission/downloads:/downloads -v /var/transmission/watch:/watch -e PGID=0 -e PUID=0 -e TZ=FR -p 9091:9091 l
 sioarmhf/transmission
 ```
-
+ 
 ## Sickrage
 - Arm
 ```
