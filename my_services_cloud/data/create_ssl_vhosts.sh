@@ -1,7 +1,7 @@
 echo '
 <IfModule mod_ssl.c>
 <VirtualHost *:8080>
-        DocumentRoot "/var/www/html"
+        DocumentRoot "/var/www/html" 
 </VirtualHost>'
 names=($name_ports) 
 i=0
