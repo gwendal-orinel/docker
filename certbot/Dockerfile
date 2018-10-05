@@ -2,9 +2,7 @@ FROM debian:latest
 
 EXPOSE 80 443
 
-#RUN apt-get update -y && 
-RUN apt-get install -qy wget 
-#vim curl
+RUN apt-get update -y && apt-get install -qy wget 
 
 RUN wget https://dl.eff.org/certbot-auto && chmod a+x certbot-auto
 
