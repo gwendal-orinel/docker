@@ -13,8 +13,7 @@ docker run --restart always --name mysql -e MYSQL_ROOT_PASSWORD=password -v mysq
 
 ## CertBot
 ```
-docker build https://github.com/gwendal-orinel/docker.git#master:certbot -t gorinel/certbot
-docker run --rm --name=certbot -v certbot:/var/certbot -p 9080:80 gorinel/certbot
+docker run --rm -v certbot:/var/certbot -p 9080:80 certbot/certbot certonly --standalone -n --agree-tos --work-dir /tmp --logs-dir /var/certbot/logs --config-dir /var/certbot --preferred-challenges http-01 -d $DOMAIN
 ```
 
 ## Reverse-proxy (Apache2)
