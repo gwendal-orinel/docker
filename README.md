@@ -103,3 +103,9 @@ docker run -d --name arm-runner --restart=always -v /var/run/docker.sock:/var/ru
 ```
 docker exec -it arm-runner gitlab-runner register -n --url https://gitlab.com/ --registration-token $CI_REGISTRATION_TOKEN  --executor docker --description "Runner ARM" --docker-image "docker:stable" --tag-list "runner_arm" --docker-volumes /var/run/docker.sock:/var/run/docker.sock
 ```
+
+## CertBot
+```
+docker build https://github.com/gwendal-orinel/docker.git#master:certbot -t gorinel/certbot
+docker run -d --name=certbot -h certbot -v certbot:/var/certbot --restart=always -p 9080:80 gorinel/certbot
+```
