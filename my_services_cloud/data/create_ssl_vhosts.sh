@@ -1,6 +1,6 @@
 echo '
 <IfModule mod_ssl.c>
-<VirtualHost *:8080>
+<VirtualHost *:443>
       DocumentRoot "/var/www/html" 
       Include /etc/apache2/options-ssl-apache.conf
       SSLCertificateFile /var/certbot/live/cloudwatt.orinel.net/fullchain.pem
@@ -12,7 +12,7 @@ for https in $https_ports; do
 
 if [ "${names[i]:1}" == "folio"  ]; then
 echo '
-<VirtualHost *:8080> 
+<VirtualHost *:443> 
       ServerName "gwendal.orinel.net"
       ProxyPass / https://172.17.0.1:'$https'/
       ProxyPassReverse / https://172.17.0.1:'$https'/
@@ -27,7 +27,7 @@ fi
 
 if [ "${names[i]:1}" == "owncloud"  ]; then
 echo '
-<VirtualHost *:8080> 
+<VirtualHost *:443> 
       ServerName "cloud.orinel.net"
       ProxyPass / https://172.17.0.1:'$https'/
       ProxyPassReverse / https://172.17.0.1:'$https'/
