@@ -53,6 +53,25 @@ docker build https://github.com/gwendal-orinel/docker.git#master:consul -t consu
 docker run -d --name=consul --restart=always -p 8300-8302:8300-8302/tcp -p 8300-8302:8300-8302/udp -p 8500:8500/tcp -p 8600:8600/tcp -p 8600:8600/udp -p 80:80 consul
 ```
 
+## Vizualiser Swarm
+- Arm
+```
+docker service create --name=viz --publish=5000:8080 --constraint=node.role==manager --mount=type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock alexellis2/visualizer-arm:latest
+```
+
+## Graphana
+- Arm
+```
+docker service create -d -p 3000:3000 --name grafana fg2it/grafana-armhf:v5.1.4
+```
+
+## OpenFaas
+- Arm
+```
+git clone https://github.com/openfaas/faas && cd faas && ./deploy_stack.armhf.sh #openfaas
+faas deploy -g http://IP:PORT -f stack_arm.yml #stack exemple
+```
+
 ## MiniProxy
 ```
 docker build https://github.com/gwendal-orinel/docker.git#master:proxy -t miniproxy
@@ -67,7 +86,7 @@ docker run api-image-finder "?q=gwendal+orinel&count=1&format=json&engine=google
 
 ## OwnCloud
 ```
-docker run -d -v owncloud:/var/www/html -p 81:80 --restart=always --name owncloud owncloud
+docker run -d -v owncloud:/var/www/html -p 80:80 --restart=always --name owncloud owncloud
 ```
 
 ## Nextcloud
