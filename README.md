@@ -1,6 +1,6 @@
 # Sections:
-  - [Docker deployements](./#docker-deployements)
-  - [Gitlab Runner](./#gitlab-runner)
+  - [Docker deployements](./docker#docker-deployements)
+  - [Gitlab Runner](./docker#gitlab-runner)
 
 
 
