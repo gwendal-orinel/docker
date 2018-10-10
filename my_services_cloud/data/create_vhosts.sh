@@ -16,7 +16,7 @@ echo '
 </VirtualHost>'	
 fi
 
-if [ "${names[i]:1}" == "nextcloud"  ]; then
+if [ "${names[i]:1}" == "nextcloud2"  ]; then
 echo '
 <VirtualHost *:80> 
       ServerName "cloud.orinel.net"
