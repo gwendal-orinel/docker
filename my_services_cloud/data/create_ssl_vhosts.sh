@@ -38,8 +38,8 @@ if [ "${names[i]:1}" == "nextcloud"  ]; then
 echo '
 <VirtualHost *:443> 
       ServerName "cloud.orinel.net"
-      ProxyPass / https://172.17.0.1:'$http'/
-      ProxyPassReverse / https://172.17.0.1:'$http'/
+      ProxyPass / http://172.17.0.1:'$http'/
+      ProxyPassReverse / http://172.17.0.1:'$http'/
       SSLProxyEngine on
       SSLProxyVerify none 
       SSLProxyCheckPeerCN off
