@@ -32,7 +32,7 @@ echo '
       ProxyPass / https://172.17.0.1:'$https'/
       ProxyPassReverse / https://172.17.0.1:'$https'/
       SSLProxyEngine on
-      SSLProxyVerify none
+      SSLProxyVerify none 
       SSLProxyCheckPeerCN off
       Include /etc/apache2/options-ssl-apache.conf
       SSLCertificateFile /var/certbot/live/cloud.orinel.net/fullchain.pem
