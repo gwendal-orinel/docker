@@ -59,3 +59,14 @@ folio:
     variables:
       - $CI_COMMIT_MESSAGE =~ /update-folio/
       
+nextcloud:
+  stage: deploy
+  tags:
+    - runner1
+  script:
+    - docker rm -f nextcloud && docker rmi -f nextcloud
+    - docker run -d --link mysql --name=nextcloud -h nextcloud -p $(get_port):80 -p $(get_port):443 -v nextcloud:/var/www/html --restart=always nextcloud
+  only:
+    variables:
+      - $CI_COMMIT_MESSAGE =~ /update-nextcloud/
+      
