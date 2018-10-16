@@ -27,19 +27,12 @@ echo '
 </VirtualHost>'	
 fi
 
-i=$((i+1))
-done 
-
-### http backends
-i=0
-for http in $http_ports; do
-
 if [ "${names[i]:1}" == "nextcloud"  ]; then
 echo '
 <VirtualHost *:443> 
       ServerName "cloud.orinel.net"
-      ProxyPass / http://172.17.0.1:'$http'/
-      ProxyPassReverse / http://172.17.0.1:'$http'/
+      ProxyPass / https://172.17.0.1:'$https'/
+      ProxyPassReverse / https://172.17.0.1:'$https'/
       SSLProxyEngine on
       SSLProxyVerify none 
       SSLProxyCheckPeerCN off
@@ -48,6 +41,14 @@ echo '
       SSLCertificateKeyFile /var/certbot/live/cloud.orinel.net/privkey.pem
 </VirtualHost>'	
 fi
+
+i=$((i+1))
+done 
+
+### http backends
+i=0
+for http in $http_ports; do
+
   
 i=$((i+1))
 done 
