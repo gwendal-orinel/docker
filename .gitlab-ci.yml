@@ -65,7 +65,7 @@ nextcloud:
     - runner1
   script:
     - docker rm -f nextcloud && docker rmi -f nextcloud
-    - docker run -d --name=nextcloud -h nextcloud -p $(get_port):80 -p $(get_port):443 -v nextcloud:/data --restart=always ownyourbits/nextcloudpi-armhf cloud.orinel.net
+    - docker run -d --name=nextcloud -h nextcloud -p $(get_port):80 -p $(get_port):443 -v nextcloud:/data --restart=always ownyourbits/nextcloudpi cloud.orinel.net
   only:
     variables:
       - $CI_COMMIT_MESSAGE =~ /update-nextcloud/
