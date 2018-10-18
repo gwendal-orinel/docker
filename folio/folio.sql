@@ -50,7 +50,7 @@ INSERT INTO `competences` (`id`, `nom`, `niveau`, `contenu`) VALUES
 (4, 'Langages informatiques', 'Avancé', 'Shell;SQL;C;C++;Php;Css;Symfony;Javascript;Ajax;Python;Go;Base de Java'),
 (5, 'Outils', 'Avancé', 'Ansible (déploiement DevOps);Consul (outil de service discovery);Active Directory;Git;DOS;Shell;Outils Gestion de Projets'),
 (6, 'Systèmes de données / BDD', 'Avancé', 'MySQL;Oracle;PhpMyAdmin;NoSQL;Base de connaissance en BigData'),
-(7, 'Système D\'exploitation', 'Intermediaire', 'RedHat;CentOs;Ubuntu;Debian;Windows XP à Windows 10;ChromeOS'),
+(7, 'Système d\'exploitation', 'Intermediaire', 'RedHat;CentOs;Ubuntu;Debian;Windows XP à Windows 10;ChromeOS'),
 (8, 'Langues Vivantes', 'Intermediaire', 'Anglais: Lu,Ecrit,Parlé (Niveau Ingénieur + Technique)');
 
 -- --------------------------------------------------------
@@ -197,7 +197,7 @@ INSERT INTO `experiences` (`id`, `dates`, `description`) VALUES
 (1, 'De Septembre 2010 à Aout 2013', 'En formation BacPro Electrotechnique Energies et Equipements Communicants. </br>Apprenti: Technicien Intervenant dans la société <b class=\"text-info\">IDIPS</b>'),
 (2, 'De Septembre 2013 à Aout 2015', 'En formation BTS Services Informatiques aux Organisations spécialité Solutions d\'Infrastructure, Système et réseau. </br>Apprenti: Administrateurs réseau sécurité et Support utilisateurs dans la société <b class=\"text-info\">Econocom-Osiatis</b>'),
 (3, 'De Septembre 2015 à Aout 2016', 'En formation Licence d\'Analyste-Concepteur de Système d\'Information et de Decision. </br>Apprenti: Architect Infrastructure et solutions cloud dans la société <b class=\"text-info\">Renault</b>'),
-(4, 'Mars 2018', 'Réalisation d’une plateforme de Capture The Flag (CTF) en partenariat avec l’<b class=\"text-info\">AFNIC</b>'),
+(4, 'En Mars 2018', 'Réalisation d’une plateforme de Capture The Flag (CTF) en partenariat avec l’<b class=\"text-info\">AFNIC</b>'),
 (5, 'De Septembre 2016 à Aujourd\'hui', 'En formation de Manager en Informatique et Robotique specialité Sécurité Informatique des Industries Connectées. </br>Apprenti: Recherche et Developement de solutions cloud en Paas/Iaas dans la société <b class=\"text-info\">Orange</b>');
 
 -- --------------------------------------------------------
