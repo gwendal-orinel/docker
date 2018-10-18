@@ -44,13 +44,14 @@ CREATE TABLE IF NOT EXISTS `competences` (
 --
 
 INSERT INTO `competences` (`id`, `nom`, `niveau`, `contenu`) VALUES
-(1, 'Solution de Virtualisation', 'Avancé', 'Openstack;KVM;Proxmox;VMware;Amazon AWS;Cloudwatt;Docker;CloudFoundry;Cloud-computing'),
-(2, 'Réseaux', 'Avancé', 'TCP/IP;Lan/Wlan;VPN;SSL;Routage;Protocoles de Redondance'),
-(3, 'Langages informatiques', 'Avancé', 'Html;Php;Framework Symfony 2;C/C++;Javascript;Java;Css;Twig'),
-(4, 'Systèmes de données / BDD', 'Intermediaire', 'MySQL;Oracle;PhpMyAdmin;NoSQL;Base de connaissance en BigData'),
-(5, 'Système D\'exploitation', 'Intermediaire', 'Windows XP à Windows 10;RedHat;CentOs;Ubuntu;Debian;ChromeOS'),
-(6, 'Outils', 'Intermediaire', 'Microsoft Office;Lotus;Easyvista;DOS;Shell;MSproject;Gantt;Bouml;Jmerise;Ansible'),
-(7, 'Langues Vivantes', 'Intermediaire', 'Anglais: Lu, Ecrit, Parlé (Niveau Scolaire + Technique)');
+(1, 'Solution de Virtualisation', 'Avancé', 'Openstack;Amazon AWS;Docker;Openshift;KVM;Proxmox;VMware'),
+(2, 'Réseaux', 'Avancé', 'Pfsense;VPN ipsec;VLAN/Routage sur Cisco;802.1x;Portail captif;VOIP(Asterisk)'),
+(3, 'Sécurité', 'Avancé', 'Protection ddos;CDP flooding;VLAN hooping;MITM;SSL/TLS;Sécurisation Web'),
+(4, 'Langages informatiques', 'Avancé', 'Shell;SQL;C;C++;Php;Css;Symfony;Javascript;Ajax;Python;Go;Base de Java'),
+(5, 'Outils', 'Avancé', 'Ansible (déploiement DevOps);Consul (outil de service discovery);Active Directory;Git;DOS;Shell;Outils Gestion de Projets'),
+(6, 'Systèmes de données / BDD', 'Avancé', 'MySQL;Oracle;PhpMyAdmin;NoSQL;Base de connaissance en BigData'),
+(7, 'Système D\'exploitation', 'Intermediaire', 'RedHat;CentOs;Ubuntu;Debian;Windows XP à Windows 10;ChromeOS'),
+(8, 'Langues Vivantes', 'Intermediaire', 'Anglais: Lu,Ecrit,Parlé (Niveau Ingénieur + Technique)');
 
 -- --------------------------------------------------------
 
@@ -72,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `diplomes` (
 --
 
 INSERT INTO `diplomes` (`id`, `titre`, `description`, `duree`) VALUES
-(1, 'Master MSIR (SIIC)', 'Manager en Informatique & Robotique spécialité sécurité informatique des industries connectées', '2'),
+(1, 'Master MSIR (SIIC)', 'Manager en Informatique & Robotique spécialité Sécurité Informatique des Industries Connectées', '2'),
 (2, 'Licence ACSID', 'Licence d\'Analyste-Concepteur de Système d\'Information et de Decision', '1'),
 (3, 'Bts SIO (SISR)', 'BTS Services Informatiques aux Organisations spécialité Solutions d\'Infrastructure, Système et réseau', '2'),
 (4, 'BacPro ELEEC', 'BacPro Electrotechnique Energies et Equipements Communicants', '3');
@@ -196,7 +197,8 @@ INSERT INTO `experiences` (`id`, `dates`, `description`) VALUES
 (1, 'De Septembre 2010 à Aout 2013', 'En formation BacPro Electrotechnique Energies et Equipements Communicants. </br>Apprenti: Technicien Intervenant dans la société <b class=\"text-info\">IDIPS</b>'),
 (2, 'De Septembre 2013 à Aout 2015', 'En formation BTS Services Informatiques aux Organisations spécialité Solutions d\'Infrastructure, Système et réseau. </br>Apprenti: Administrateurs réseau sécurité et Support utilisateurs dans la société <b class=\"text-info\">Econocom-Osiatis</b>'),
 (3, 'De Septembre 2015 à Aout 2016', 'En formation Licence d\'Analyste-Concepteur de Système d\'Information et de Decision. </br>Apprenti: Architect Infrastructure et solutions cloud dans la société <b class=\"text-info\">Renault</b>'),
-(4, 'De Septembre 2016 à Aujourd\'hui', 'En formation de Manager en Informatique et Robotique specialité Sécurité Informatique des Industries Connectées. </br>Apprenti: Recherche et Developement de solutions cloud en Paas/Iaas dans la société <b class=\"text-info\">Orange</b>');
+(4, 'Mars 2018', 'Réalisation d’une plateforme de Capture The Flag (CTF) en partenariat avec l’<b class=\"text-info\">AFNIC</b>'),
+(5, 'De Septembre 2016 à Aujourd\'hui', 'En formation de Manager en Informatique et Robotique specialité Sécurité Informatique des Industries Connectées. </br>Apprenti: Recherche et Developement de solutions cloud en Paas/Iaas dans la société <b class=\"text-info\">Orange</b>');
 
 -- --------------------------------------------------------
 
