@@ -14,6 +14,7 @@ docker run -d --name=apache-php -h apache-php --restart=always -p 80:80 -p 443:4
 ## MySql
 ```
 docker run --restart always --name mysql -e MYSQL_ROOT_PASSWORD=password -v mysql:/var/lib/mysql -d mysql:5.7
+docker run -d --name mysql -h mysql -v mysql:/app -e MYSQL_USER=root -e MYSQL_PASSWORD=password -e MYSQL_ROOT_PASSWORD=111111 wangxian/alpine-mysql
 ```
 
 ## CertBot
@@ -102,6 +103,11 @@ docker run -d --restart=always -p 80:80 -v nextcloud:/var/www/html --name nextcl
 ## NodeRed
 ```
 docker run -it -p 80:1880 -d --name mynodered nodered/node-red-docker
+```
+
+## Jeedom
+```
+docker run -d --name jeedom -h jeedom --link mysql:mysql -v jeedom:/var/www/html -p 80:80 jeedom/jeedom
 ```
 
 ## My Services Cloud
