@@ -42,6 +42,22 @@ echo '
 </VirtualHost>'	
 fi
 
+
+if [ "${names[i]:1}" == "webhook"  ]; then
+echo '
+<VirtualHost *:443> 
+      ServerName "api.orinel.net"
+      ProxyPass / https://172.17.0.1:'$https'/
+      ProxyPassReverse / https://172.17.0.1:'$https'/
+      SSLProxyEngine on
+      SSLProxyVerify none 
+      SSLProxyCheckPeerCN off
+      Include /etc/apache2/options-ssl-apache.conf
+      SSLCertificateFile /var/certbot/live/api.orinel.net/fullchain.pem
+      SSLCertificateKeyFile /var/certbot/live/api.orinel.net/privkey.pem
+</VirtualHost>'	
+fi
+
 i=$((i+1))
 done 
 
