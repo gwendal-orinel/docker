@@ -6,7 +6,7 @@ RUN apt-get update -y && apt-get install -qy wget curl vim git apache2 libapache
 
 RUN rm -f -R /var/www/html && git clone https://github.com/gwendal-orinel/google-home.git /var/www/html
 
-RUN RUN echo "<Directory \"/var/www/html\" >\n AllowOverride All \n</Directory>" >> /etc/apache2/apache2.conf
+RUN echo "<Directory \"/var/www/html\" >\n AllowOverride All \n</Directory>" >> /etc/apache2/apache2.conf
 
 RUN a2enmod rewrite ssl && a2ensite default-ssl
 
