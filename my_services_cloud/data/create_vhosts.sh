@@ -23,6 +23,14 @@ echo '
       Redirect / https://cloud.orinel.net/
 </VirtualHost>'	
 fi
+
+if [ "${names[i]:1}" == "webhook"  ]; then
+echo '
+<VirtualHost *:80> 
+      ServerName "api.orinel.net"
+      Redirect / https://api.orinel.net/
+</VirtualHost>'	
+fi
      
 i=$((i+1))
 done
