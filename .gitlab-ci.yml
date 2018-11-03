@@ -32,6 +32,7 @@ services-cloud:
   only:
     variables:
       - $CI_COMMIT_MESSAGE =~ /update/
+      - $PIPELINE ~= /update/
  
 apache-php:
   stage: deploy
