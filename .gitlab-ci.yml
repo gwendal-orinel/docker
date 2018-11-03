@@ -32,7 +32,6 @@ services-cloud:
   only:
     variables:
       - $CI_COMMIT_MESSAGE =~ /update/
-      - $PIPELINE =~ /update/
  
 apache-php:
   stage: deploy
@@ -45,7 +44,6 @@ apache-php:
   only:
     variables:
       - $CI_COMMIT_MESSAGE =~ /update-apache-php/
-      - $PIPELINE =~ /update-apache-php/
       
 folio:
   stage: deploy
@@ -62,7 +60,6 @@ folio:
   only:
     variables:
       - $CI_COMMIT_MESSAGE =~ /update-folio/
-      - $PIPELINE =~ /update-folio/
       
 nextcloud:
   stage: deploy
