@@ -2,7 +2,7 @@ FROM debian:latest
 
 EXPOSE 80 443
 
-RUN apt-get update -y && apt-get install -qy wget curl vim apache2 libapache2-mod-php php php7.0-mbstring
+RUN apt-get update -y && apt-get install -qy wget curl vim apache2 libapache2-mod-php php php7.0-mbstring git
 
 RUN rm -f -R /var/www/html 
 
