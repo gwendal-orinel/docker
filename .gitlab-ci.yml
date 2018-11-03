@@ -45,6 +45,18 @@ apache-php:
     variables:
       - $CI_COMMIT_MESSAGE =~ /update-apache-php/
       
+webhook:
+  stage: deploy
+  tags:
+    - runner1
+  script:
+    - docker rm -f webhook && docker rmi -f gorinel/webhook
+    - docker build webhook -t gorinel/webhook
+    - docker run -d --name=webhook -h webhook -p $(get_port):80 -p $(get_port):443 --restart=always gorinel/webhook
+  only:
+    variables:
+      - $CI_COMMIT_MESSAGE =~ /update-webhook/
+      
 folio:
   stage: deploy
   tags:
