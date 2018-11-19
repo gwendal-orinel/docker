@@ -84,3 +84,4 @@ nextcloud:
     variables:
       - $CI_COMMIT_MESSAGE =~ /update-nextcloud/
       
+ 
