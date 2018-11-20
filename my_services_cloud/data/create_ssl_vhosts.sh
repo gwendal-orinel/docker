@@ -51,6 +51,22 @@ echo '
 </VirtualHost>'	
 fi
 
+
+if [ "${names[i]:1}" == "ctf"  ]; then
+echo '
+<VirtualHost *:443> 
+      ServerName "ctf.orinel.net"
+      ProxyPass / https://172.17.0.1:'$https'/
+      ProxyPassReverse / https://172.17.0.1:'$https'/
+      SSLProxyEngine on
+      SSLProxyVerify none 
+      SSLProxyCheckPeerCN off
+      Include /etc/apache2/options-ssl-apache.conf
+      SSLCertificateFile /var/certbot/live/ctf.orinel.net/fullchain.pem
+      SSLCertificateKeyFile /var/certbot/live/ctf.orinel.net/privkey.pem
+</VirtualHost>'	
+fi
+
 i=$((i+1))
 done 
 
