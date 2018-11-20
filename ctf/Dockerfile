@@ -6,8 +6,8 @@ RUN apt-get update -y && apt-get install -qy wget git vim unzip apache2 libapach
 
 RUN rm -r /var/www/html/*
 
-RUN wget https://github.com/MSIR2018/CFI-CTF/blob/master/Docker/Host/Data/backupweb.zip
-RUN unzip backupweb.zip -d /var/www/html/
+RUN wget -O /tmp/backupweb.zip https://github.com/MSIR2018/CFI-CTF/blob/master/Docker/Host/Data/backupweb.zip
+RUN unzip /tmp/backupweb.zip -d /var/www/html/.
 
 RUN echo "<Directory \"/var/www/html\" >\n AllowOverride All \n</Directory>" >> /etc/apache2/apache2.conf
 
