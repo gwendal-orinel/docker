@@ -95,6 +95,25 @@ folio:
     variables:
       - $CI_COMMIT_MESSAGE =~ /update-folio/
       
+ctf:
+  stage: deploy
+  tags:
+    - cw-o
+  before_script:
+    - if [ -z "$(docker ps -aq -f 'name=mysql')" ];then docker run --restart always --name mysql -e MYSQL_ROOT_PASSWORD=$BDD_PASS -v mysql:/var/lib/mysql -d mysql:5.7 ;fi
+  script:
+    - docker rm -f ctf && docker rmi -f gorinel/ctf
+    - docker build ctf -t gorinel/ctf
+    - docker run -d --link mysql --name=ctf -h ctf -p $(get_port):80 -p $(get_port):443 -e bdd_user=$BDD_USER -e bdd_pass=$BDD_PASS -e bdd_host=mysql --restart=always gorinel/ctf
+    - docker exec ctf bash -c 'echo -e "export BDD_USER=\"$bdd_user\"\nexport BDD_PASS=\"$bdd_pass\"\nexport BDD_HOST=\"$bdd_host\"" >> /etc/apache2/envvars'
+    - docker restart ctf
+    - wget -O /tmp/backupsql.sql https://github.com/MSIR2018/CFI-CTF/raw/master/Docker/Host/Data/backupsql.sql
+    - docker cp /tmp/backupsql.sql mysql:/tmp/
+    - docker exec mysql bash -c 'mysql -h localhost -u root -p$MYSQL_ROOT_PASSWORD < /tmp/backupsql.sql'
+  only:
+    variables:
+      - $CI_COMMIT_MESSAGE =~ /update-ctf/      
+      
 nextcloud:
   stage: deploy
   tags:
