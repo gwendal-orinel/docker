@@ -6,6 +6,8 @@ RUN apt-get update -y && apt-get install -qy wget vim apache2 libapache2-mod-php
 
 RUN a2enmod proxy proxy_http ssl && a2ensite default-ssl 
 
+RUN rm -r /var/www/html/*
+
 COPY data/*.sh /var/
 COPY data/options-ssl-apache.conf /etc/apache2/options-ssl-apache.conf
 
