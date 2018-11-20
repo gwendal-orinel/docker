@@ -17,7 +17,7 @@ services-cloud:
   # publish created services
   stage: publish
   tags: 
-    - runner1
+    - cw-o
   script:
     - docker rm -f my_services_cloud && docker rmi -f gorinel/my_services_cloud
     - docker build my_services_cloud -t gorinel/my_services_cloud
@@ -48,7 +48,7 @@ apache-php:
 webhook:
   stage: deploy
   tags:
-    - runner1
+    - cw-p
   script:
     - docker rm -f webhook && docker rmi -f gorinel/webhook
     - docker build webhook -t gorinel/webhook
@@ -60,7 +60,9 @@ webhook:
 folio:
   stage: deploy
   tags:
-    - runner1
+    - cw-o
+  before_script:
+    - if [ -z "$(docker ps -aq -f 'name=mysql')" ];then docker run --restart always --name mysql -e MYSQL_ROOT_PASSWORD=$BDD_PASS -v mysql:/var/lib/mysql -d mysql:5.7 ;fi
   script:
     - docker rm -f folio && docker rmi -f gorinel/folio
     - docker build folio -t gorinel/folio
