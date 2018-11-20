@@ -10,7 +10,7 @@ before_script:
 #  - docker rm -f $(docker ps -aq -f 'name=runner-')
 
 stages:
-  - deploy
+  - deploy 
   - publish
 
 services-cloud-o:
