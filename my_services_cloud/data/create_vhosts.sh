@@ -31,6 +31,14 @@ echo '
       Redirect / https://api.orinel.net/
 </VirtualHost>'	
 fi
+
+if [ "${names[i]:1}" == "ctf"  ]; then
+echo '
+<VirtualHost *:80> 
+      ServerName "ctf.orinel.net"
+      Redirect / https://ctf.orinel.net/
+</VirtualHost>'	
+fi
      
 i=$((i+1))
 done
