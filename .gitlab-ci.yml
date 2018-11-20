@@ -17,7 +17,7 @@ services-cloud:
   # publish created services
   stage: publish
   tags: 
-    - cw-*
+    - cw
   script:
     - docker rm -f my_services_cloud && docker rmi -f gorinel/my_services_cloud
     - docker build my_services_cloud -t gorinel/my_services_cloud
