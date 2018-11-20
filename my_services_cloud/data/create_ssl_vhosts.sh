@@ -1,11 +1,11 @@
 echo '
 <IfModule mod_ssl.c>
-<VirtualHost *:443>
-      DocumentRoot "/var/www/html" 
-      Include /etc/apache2/options-ssl-apache.conf
-      SSLCertificateFile /var/certbot/live/cloudwatt.orinel.net/fullchain.pem
-      SSLCertificateKeyFile /var/certbot/live/cloudwatt.orinel.net/privkey.pem
-</VirtualHost>'
+#<VirtualHost *:443>
+#      DocumentRoot "/var/www/html" 
+#      Include /etc/apache2/options-ssl-apache.conf
+#      SSLCertificateFile /var/certbot/live/cloudwatt.orinel.net/fullchain.pem
+#      SSLCertificateKeyFile /var/certbot/live/cloudwatt.orinel.net/privkey.pem
+#</VirtualHost>'
 names=($name_ports) 
 
 ### https backends
