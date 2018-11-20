@@ -18,6 +18,7 @@ services-cloud:
   stage: publish
   tags: 
     - cw-o
+    - cw-p
   script:
     - docker rm -f my_services_cloud && docker rmi -f gorinel/my_services_cloud
     - docker build my_services_cloud -t gorinel/my_services_cloud
@@ -36,7 +37,7 @@ services-cloud:
 apache-php:
   stage: deploy
   tags:
-    - runner1
+    - cw-p
   script:
     - docker rm -f apache-php && docker rmi -f gorinel/apache-php
     - docker build apache-php -t gorinel/apache-php
@@ -76,7 +77,7 @@ folio:
       - $CI_COMMIT_MESSAGE =~ /update-folio/
       
 nextcloud:
-  stage: deploy
+  stage: cw-o
   tags:
     - runner1
   script:
