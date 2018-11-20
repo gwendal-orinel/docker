@@ -1,4 +1,4 @@
-## Pipeline: https://gitlab.com/gwendal-orinel/docker/pipelines ##
+## Pipeline: https://gitlab.com/gwendal-orinel/docker/pipelines ## 
  
 image: docker:stable  
 
