@@ -9,7 +9,7 @@ RUN rm -r /var/www/html/*
 RUN wget -O /tmp/backupweb.zip https://github.com/MSIR2018/CFI-CTF/raw/master/Docker/Host/Data/backupweb.zip
 RUN unzip /tmp/backupweb.zip -d /var/www/
 
-RUN cp data/login_bdd.php /var/www/html/php/include/login_bdd.php
+COPY data/login_bdd.php /var/www/html/php/include/login_bdd.php
 
 RUN echo "<Directory \"/var/www/html\" >\n AllowOverride All \n</Directory>" >> /etc/apache2/apache2.conf
 
