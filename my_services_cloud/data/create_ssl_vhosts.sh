@@ -1,5 +1,4 @@
-echo '
-<IfModule mod_ssl.c>
+echo '<IfModule mod_ssl.c>'
 names=($name_ports) 
 
 ### https backends
