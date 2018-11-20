@@ -13,11 +13,31 @@ stages:
   - deploy
   - publish
 
-services-cloud:
+services-cloud-o:
   # publish created services
   stage: publish
   tags: 
-    - cw-p,cw-o
+    - cw-o
+  script:
+    - docker rm -f my_services_cloud && docker rmi -f gorinel/my_services_cloud
+    - docker build my_services_cloud -t gorinel/my_services_cloud
+    - export http_ports=$(for host in $(docker ps -q);do docker inspect $host | jq -r 'select(.[].NetworkSettings.Ports["80/tcp"] != null) | .[].NetworkSettings.Ports["80/tcp"][].HostPort' ;done)
+    - export https_ports=$(for host in $(docker ps -q);do docker inspect $host | jq -r 'select(.[].NetworkSettings.Ports["443/tcp"] != null) | .[].NetworkSettings.Ports["443/tcp"][].HostPort' ;done)
+    - export name_ports=$(for host in $(docker ps -q);do docker inspect $host | jq -r 'select(.[].NetworkSettings.Ports["80/tcp"] != null) | .[].Name' ;done)
+    - docker run -d --name=my_services_cloud -h my_services_cloud -v certbot:/var/certbot --restart=always -e http_ports="$http_ports" -e https_ports="$https_ports" -e name_ports="$name_ports" -p 80:80 -p 8080:443 gorinel/my_services_cloud
+    - docker exec my_services_cloud bash -c 'source /var/create_html.sh > /var/www/html/index.html'
+    - docker exec my_services_cloud bash -c 'source /var/create_vhosts.sh > /etc/apache2/sites-available/000-default.conf'
+    - docker exec my_services_cloud bash -c 'source /var/create_ssl_vhosts.sh > /etc/apache2/sites-available/default-ssl.conf'
+    - docker restart my_services_cloud
+  only:
+    variables:
+      - $CI_COMMIT_MESSAGE =~ /update/
+      
+services-cloud-p:
+  # publish created services
+  stage: publish
+  tags: 
+    - cw-p
   script:
     - docker rm -f my_services_cloud && docker rmi -f gorinel/my_services_cloud
     - docker build my_services_cloud -t gorinel/my_services_cloud
