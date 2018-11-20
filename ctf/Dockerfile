@@ -14,3 +14,4 @@ COPY data/login_bdd.php /var/www/html/php/include/login_bdd.php
 RUN echo "<Directory \"/var/www/html\" >\n AllowOverride All \n</Directory>" >> /etc/apache2/apache2.conf
 
 CMD /bin/bash -c "service apache2 start && tail -f /var/log/apache2/access.log" 
+ 
