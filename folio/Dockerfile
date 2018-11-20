@@ -13,3 +13,4 @@ RUN a2enmod rewrite ssl && a2ensite default-ssl
 CMD /bin/bash -c "service apache2 start && tail -f /var/log/apache2/access.log" 
  
 
+ 
