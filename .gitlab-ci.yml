@@ -60,7 +60,7 @@ clean-o:
   tags: 
     - cw-o
   script:
-    - docker rm -f $(docker ps -a | grep -v gitlab-runner | awk '{print $1}') || true
+    - docker rm -f $(docker ps -aq | grep -v $(docker ps -aq -f 'name=gitlab-runner')) || true
   only:
     variables:
       - $CI_COMMIT_MESSAGE =~ /clean-o/
@@ -71,7 +71,7 @@ clean-p:
   tags: 
     - cw-p
   script:
-    - docker rm -f $(docker ps -a | grep -v gitlab-runner | awk '{print $1}') || true
+    - docker rm -f $(docker ps -aq | grep -v $(docker ps -aq -f 'name=gitlab-runner')) || true
   only:
     variables:
       - $CI_COMMIT_MESSAGE =~ /clean-p/
