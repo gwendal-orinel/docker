@@ -10,6 +10,7 @@ before_script:
 #  - docker rm -f $(docker ps -aq -f 'name=runner-')
 
 stages:
+  - clean
   - deploy 
   - publish
 
@@ -53,6 +54,28 @@ services-cloud-p:
     variables:
       - $CI_COMMIT_MESSAGE =~ /update/
  
+clean-o:
+  # publish created services
+  stage: clean
+  tags: 
+    - cw-o
+  script:
+    - docker rm -f $(docker ps -aq)
+  only:
+    variables:
+      - $CI_COMMIT_MESSAGE =~ /clean-o/
+      
+clean-p:
+  # publish created services
+  stage: clean
+  tags: 
+    - cw-p
+  script:
+    - docker rm -f $(docker ps -aq)
+  only:
+    variables:
+      - $CI_COMMIT_MESSAGE =~ /clean-p/
+ 
 apache-php:
   stage: deploy
   tags:
@@ -80,7 +103,7 @@ webhook:
 folio:
   stage: deploy
   tags:
-    - cw-o
+    - cw-p
   before_script:
     - if [ -z "$(docker ps -aq -f 'name=mysql')" ];then docker run --restart always --name mysql -e MYSQL_ROOT_PASSWORD=$BDD_PASS -v mysql:/var/lib/mysql -d mysql:5.7 ;fi
   script:
