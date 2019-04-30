@@ -119,7 +119,7 @@ folio:
   tags:
     - cw-p
   before_script:
-    - if [ -z "$(docker ps -aq -f 'name=mysql')" ];then docker run --restart always --name mysql -e MYSQL_ROOT_PASSWORD=$BDD_PASS -v mysql:/var/lib/mysql -d mysql:5.7 ;fi
+    - if [ -z "$(docker ps -aq -f 'name=mysql')" ];then docker run --restart always --name mysql -e MYSQL_ROOT_PASSWORD=$BDD_PASS -v mysql:/var/lib/mysql -d mysql:5.7 mysqld --innodb-buffer-pool-size=256M ;fi
   script:
     - docker rm -f folio && docker rmi -f gorinel/folio
     - docker build folio -t gorinel/folio
