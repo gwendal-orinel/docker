@@ -90,14 +90,14 @@ certbot-renew:
     variables:
       - $CERTBOT_RENEW
       
-certbot-renew:
+certbot-renew2:
   stage: securize
   image: certbot/certbot
   tags:
     - cw-p
   script:
     - mkdir /certbot
-    - certbot --standalone -n --agree-tos --work-dir /tmp --logs-dir /certbot/logs --config-dir /certbot --preferred-challenges http-01 -d $CERTBOT_RENEW2
+    - certbot --standalone -n --agree-tos --work-dir /tmp --logs-dir /certbot/logs --test-cert --config-dir /certbot --preferred-challenges http-01 -d $CERTBOT_RENEW2
   artifacts:
     paths:
     - /certbot
