@@ -97,7 +97,7 @@ certbot-renew2:
     - cw-p
   script:
     - mkdir /certbot
-    - certbot --standalone -n --agree-tos --work-dir /tmp --logs-dir /certbot/logs --test-cert --config-dir /certbot --preferred-challenges http-01 -d $CERTBOT_RENEW2
+    - certbot --standalone -n --agree-tos --test-cert --preferred-challenges http-01 -d $CERTBOT_RENEW2
   artifacts:
     paths:
     - /certbot
