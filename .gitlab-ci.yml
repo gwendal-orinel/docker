@@ -86,24 +86,13 @@ certbot-renew:
   script:
     - docker run --rm -v certbot:/var/certbot -p 9080:80 certbot/certbot certonly --standalone -n --agree-tos --work-dir /tmp --logs-dir /var/certbot/logs --config-dir /var/certbot --preferred-challenges http-01 -d $CERTBOT_RENEW
     - docker restart my_services_cloud
-  only:
-    variables:
-      - $CERTBOT_RENEW
-      
-certbot-renew2:
-  stage: securize
-  image: certbot/certbot
-  tags:
-    - cw-p
-  script:
-    - mkdir /certbot
-    - certbot --standalone -n --agree-tos --test-cert --preferred-challenges http-01 -d $CERTBOT_RENEW2
+    - docker cp my_services_cloud:/var/certbot/live /certbot
   artifacts:
     paths:
     - /certbot
   only:
     variables:
-      - $CERTBOT_RENEW2
+      - $CERTBOT_RENEW
 
  
 apache-php:
