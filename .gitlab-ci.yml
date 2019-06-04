@@ -1,5 +1,5 @@
 ## Pipeline: https://gitlab.com/gwendal-orinel/docker/pipelines ##  
-#     
+#         
 
 image: docker:stable   
 
