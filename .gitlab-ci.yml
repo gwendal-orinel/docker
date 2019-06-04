@@ -100,7 +100,7 @@ certbot-renew:
     - cw-p
   script:
     - export TERM=xterm
-    - /bin/bash -c "docker run --rm -it -v certbot:/var/certbot certbot/certbot certonly --manual --test-cert --agree-tos --work-dir /tmp --logs-dir /var/certbot/logs --config-dir /var/certbot -d *.orinel.net --no-bootstrap --no-bootstrap --manual-public-ip-logging-ok --preferred-challenges dns-01 --register-unsafely-without-email --server https://acme-v02.api.letsencrypt.org/directory"
+    - docker run --rm -it -v certbot:/var/certbot certbot/certbot certonly --manual --test-cert --agree-tos --work-dir /tmp --logs-dir /var/certbot/logs --config-dir /var/certbot -d *.orinel.net --no-bootstrap --no-bootstrap --manual-public-ip-logging-ok --preferred-challenges dns-01 --register-unsafely-without-email --server https://acme-v02.api.letsencrypt.org/directory
     - docker restart my_services_cloud
     - docker cp my_services_cloud:/var/certbot/live /certbot
   artifacts:
