@@ -99,9 +99,11 @@ certbot-renew:
   tags:
     - cw-p
   script:
+    - echo -e "FROM certbot/certbot\nRUN apk add bind-tools" > Dockerfile
+    - docker build -t cert .
     - echo -e "echo -e \"URL= \$CERTBOT_TOKEN \nCONTENT= \$CERTBOT_VALIDATION \" \nwhile [ \"\$(dig -t txt +short _acme-challenge.orinel.net)\" != \"\$CERTBOT_VALIDATION\" ]; do sleep 2 ;done " > authenticator.sh
     - chmod +x authenticator.sh
-    - docker run --rm -v $(pwd):/var/certbot certbot/certbot certonly -n --manual --test-cert --agree-tos --work-dir /tmp --logs-dir /var/certbot/logs --config-dir /var/certbot -d *.orinel.net --no-bootstrap --manual-public-ip-logging-ok --preferred-challenges dns-01 --register-unsafely-without-email --server https://acme-v02.api.letsencrypt.org/directory --manual-auth-hook authenticator.sh -d *.orinel.net
+    - docker run --rm -v $(pwd):/var/certbot cert certonly -n --manual --test-cert --agree-tos --work-dir /tmp --logs-dir /var/certbot/logs --config-dir /var/certbot -d *.orinel.net --no-bootstrap --manual-public-ip-logging-ok --preferred-challenges dns-01 --register-unsafely-without-email --server https://acme-v02.api.letsencrypt.org/directory --manual-auth-hook authenticator.sh -d *.orinel.net
   artifacts:
     paths:
     - live
