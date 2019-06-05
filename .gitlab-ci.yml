@@ -106,10 +106,11 @@ certbot-renew:
   script:
     - echo -e "dns_ovh_endpoint = ovh-eu \ndns_ovh_application_key = $OVH_APP_KEY \ndns_ovh_application_secret = $OVH_APP_SECRET \ndns_ovh_consumer_key = $OVH_CONSU_KEY" > /ovh.ini 
     - certbot certonly --dns-ovh --dns-ovh-credentials /ovh.ini --test-cert --agree-tos --work-dir /tmp --logs-dir /var/certbot/logs --config-dir /var/certbot -d "*.orinel.net" --no-bootstrap --manual-public-ip-logging-ok --preferred-challenges dns-01 --register-unsafely-without-email --server https://acme-v02.api.letsencrypt.org/directory -d *.orinel.net
+    - cp -r /var/certbot/live .
   artifacts:
     name: "certificats-orinel"
     paths:
-    -  /var/certbot/live/orinel.net/fullchain.pem
+    -  live/
 
  
 apache-php:
