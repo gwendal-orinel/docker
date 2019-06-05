@@ -12,6 +12,7 @@ before_script:
 
 stages:
   - clean
+  - build
   - deploy
   - securize
   - publish
