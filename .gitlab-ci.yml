@@ -104,7 +104,7 @@ certbot-renew:
       - $CERTBOT_RENEW
 
 certbot-update-pages:
-  stage: securize
+  stage: publish
   dependencies:
     - certbot-renew
   tags:
