@@ -99,13 +99,10 @@ certbot-renew:
   tags:
     - cw-p
   script:
-    #- echo "echo ok; sleep 120;" > authenticator.sh
     - echo -e "dns_ovh_endpoint = ovh-eu \ndns_ovh_application_key = $OVH_APP_KEY \ndns_ovh_application_secret = $OVH_APP_SECRET \ndns_ovh_consumer_key = $OVH_CONSU_KEY" > ovh.ini 
-    - chmod 600 ovh.ini
-    #- echo -e "echo -e \"URL= \$CERTBOT_TOKEN \nCONTENT= \$CERTBOT_VALIDATION \"; \nwhile [ \"\$(dig txt +short _acme-challenge.orinel.net | tr -d\\\")\" != \"\$CERTBOT_VALIDATION\" ]; do sleep 2 ;done " > authenticator.sh
-    #- echo -e "FROM certbot/certbot\nRUN apk add bind-tools\nCOPY authenticator.sh /authenticator.sh" > Dockerfile
-    #- docker build -t cert .
-    - docker run --rm -v $(pwd):/var/certbot certbot/dns-ovh certonly --dns-ovh --dns-ovh-credentials /var/certbot/ovh.ini --test-cert --agree-tos --work-dir /tmp --logs-dir /var/certbot/logs --config-dir /var/certbot -d *.orinel.net --no-bootstrap --manual-public-ip-logging-ok --preferred-challenges dns-01 --register-unsafely-without-email --server https://acme-v02.api.letsencrypt.org/directory -d *.orinel.net
+    - echo -e "FROM certbot/dns-ovh\nCOPY ovh.ini /ovh.ini\nRUN chmod 600 /ovh.ini" > Dockerfile
+    - docker build -t cert .
+    - docker run --rm -v $(pwd):/var/certbot certbot/dns-ovh certonly --dns-ovh --dns-ovh-credentials /ovh.ini --test-cert --agree-tos --work-dir /tmp --logs-dir /var/certbot/logs --config-dir /var/certbot -d *.orinel.net --no-bootstrap --manual-public-ip-logging-ok --preferred-challenges dns-01 --register-unsafely-without-email --server https://acme-v02.api.letsencrypt.org/directory -d *.orinel.net
     - ls -l
   artifacts:
     paths:
