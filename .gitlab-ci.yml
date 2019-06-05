@@ -121,7 +121,7 @@ certbot-update-pages:
     key: certbot
     paths:
     - certbot/
-     policy: pull
+    policy: pull
   only:
     variables:
       - $CERTBOT_RENEW
