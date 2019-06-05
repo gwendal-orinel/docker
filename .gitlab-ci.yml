@@ -4,7 +4,7 @@
 image: docker:stable   
 
 before_script:
-  - apk update && apk add git jq
+  - apk update && apk add git jq bash curl
   - get_port(){ echo $(((RANDOM%65000)+32000)); }
 
 #after_script:
@@ -112,10 +112,7 @@ certbot-update-pages:
   tags:
     - cw-p
   script:
-    - ls -l
-    - ls -l certbot/
     - chmod +x certbot/update-pages.sh
-    - ls -l certbot
     - ./certbot/update-pages.sh
   environment:
     name: certbot
