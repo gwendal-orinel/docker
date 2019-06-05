@@ -80,6 +80,7 @@ clean-p:
       - $CI_COMMIT_MESSAGE =~ /clean-p/
       
 
+#### --test-cert flag for testing
 certbot-renew:
   stage: securize
   tags:
@@ -89,7 +90,7 @@ certbot-renew:
     entrypoint: ['']
   script:
     - echo -e "dns_ovh_endpoint = ovh-eu \ndns_ovh_application_key = $OVH_APP_KEY \ndns_ovh_application_secret = $OVH_APP_SECRET \ndns_ovh_consumer_key = $OVH_CONSU_KEY" > /ovh.ini && chmod 600 /ovh.ini
-    - certbot certonly --dns-ovh --dns-ovh-credentials /ovh.ini --agree-tos --work-dir /tmp --logs-dir /var/certbot/logs --config-dir /var/certbot -d "*.orinel.net" --no-bootstrap --manual-public-ip-logging-ok --preferred-challenges dns-01 --register-unsafely-without-email --server https://acme-v02.api.letsencrypt.org/directory -d *.orinel.net
+    - certbot certonly --dns-ovh --dns-ovh-credentials /ovh.ini --test-cert --agree-tos --work-dir /tmp --logs-dir /var/certbot/logs --config-dir /var/certbot -d "*.orinel.net" --no-bootstrap --manual-public-ip-logging-ok --preferred-challenges dns-01 --register-unsafely-without-email --server https://acme-v02.api.letsencrypt.org/directory -d *.orinel.net
     - cp -r /var/certbot/live .
   artifacts:
     name: "certificats-orinel"
@@ -102,6 +103,22 @@ certbot-renew:
     variables:
       - $CERTBOT_RENEW
 
+certbot-update-pages:
+  stage: securize
+  dependencies:
+    - certbot-renew
+  tags:
+    - cw-p
+  script:
+    - ls -l
+    - unzip certificats-orinel.zip
+    - ls -l
+    - chmod +x certbot/update-pages.sh && ./certbot/update-pages.sh
+  environment:
+    name: certbot
+  only:
+    variables:
+      - $CERTBOT_RENEW
  
 apache-php:
   stage: deploy
