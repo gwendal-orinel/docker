@@ -109,7 +109,7 @@ certbot-renew:
   artifacts:
     name: "certificats-orinel"
     paths:
-    -  /var/certbot/live/*
+    -  /var/certbot/live/orinel.net/fullchain.pem
 
  
 apache-php:
