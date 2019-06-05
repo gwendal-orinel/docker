@@ -119,6 +119,7 @@ certbot-update-pages:
   only:
     variables:
       - $CERTBOT_RENEW
+      - $CERTBOT_UPDATE
  
 apache-php:
   stage: deploy
