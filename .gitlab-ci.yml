@@ -103,10 +103,10 @@ certbot-renew:
     - echo -e "FROM certbot/dns-ovh\nCOPY ovh.ini /ovh.ini\nRUN chmod 600 /ovh.ini" > Dockerfile
     - docker build -t cert .
     - docker run --rm -v $(pwd):/var/certbot cert certonly --dns-ovh --dns-ovh-credentials /ovh.ini --test-cert --agree-tos --work-dir /tmp --logs-dir /var/certbot/logs --config-dir /var/certbot -d *.orinel.net --no-bootstrap --manual-public-ip-logging-ok --preferred-challenges dns-01 --register-unsafely-without-email --server https://acme-v02.api.letsencrypt.org/directory -d *.orinel.net
-    - ls -l
+    - ls -l $CI_PROJECT_DIR
   artifacts:
     paths:
-    - live
+    - $CI_PROJECT_DIR/live
 
  
 apache-php:
