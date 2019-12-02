@@ -35,7 +35,7 @@ services-cloud-o:
     - docker restart my_services_cloud
   only:
     variables:
-      - $CI_COMMIT_MESSAGE =~ /update/
+      - $CI_COMMIT_MESSAGE =~ /update-/
       
 services-cloud-p:
   # publish created services
@@ -55,7 +55,7 @@ services-cloud-p:
     - docker restart my_services_cloud
   only:
     variables:
-      - $CI_COMMIT_MESSAGE =~ /update/
+      - $CI_COMMIT_MESSAGE =~ /update-/
  
 clean-o:
   # publish created services
