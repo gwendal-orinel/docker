@@ -31,20 +31,19 @@ docker run -d --name=reverse-proxy -h reverse-proxy -e 'url=http://IP:PORT/' --r
 ## Plex
 - Arm
 ```
-docker run -d --restart=always --name=plex --net=host -e PUID=0 -e PGID=0 -v /var/plex/config:/config -v /var/plex/data:/data/tvshows -v /var/plex/data:/data/movies -v /var/plex/transcode:/transcode lsioarmhf/plex
+docker run -d --restart=always --name=plex --net=host -e PUID=0 -e PGID=0 -v /var/plex/config:/config -v /var/plex/data:/data/tvshows -v /var/plex/data:/data/movies -v /var/plex/transcode:/transcode linuxserver/plex
 ```
 
 ## Transmission
 - Arm
 ```
-docker run -d --name=transmission -h transmission --restart=always -v /var/transmission/config:/config -v /var/transmission/downloads:/downloads -v /var/transmission/watch:/watch -e PGID=0 -e PUID=0 -e TZ=FR -p 9091:9091 l
-sioarmhf/transmission
+docker run -d --name=transmission -h transmission --restart=always -v /var/transmission/config:/config -v /var/transmission/downloads:/downloads -v /var/transmission/watch:/watch -e PGID=0 -e PUID=0 -e TZ=FR -p 9091:9091 linuxserver/transmission
 ```
  
-## Sickrage
+## Sickrage (sickchill)
 - Arm
 ```
-docker run -d --restart=always --name=sickrage -v /var/transmission/downloads:/downloads -v /var/plex/data:/tv -v /var/sickrage/config:/config -e PGID=0 -e PUID=0 -e TZ=FR -p 8081:8081 lsioarmhf/sickrage
+docker run -d --restart=always --name=sickrage -v /var/transmission/downloads:/downloads -v /var/plex/data:/tv -v /var/sickrage/config:/config -e PGID=0 -e PUID=0 -e TZ=FR -p 8081:8081 linuxserver/sickchill
 ```
 
 ## Portainer
