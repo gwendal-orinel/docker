@@ -84,6 +84,7 @@ clean-p:
 certbot-renew:
   stage: securize
   tags:
+    - gitlab-org-docker
     - cw-p
   image: 
     name: certbot/dns-ovh
@@ -109,6 +110,7 @@ certbot-renew:
 certbot-update-pages:
   stage: publish
   tags:
+    - gitlab-org-docker
     - cw-p
   script:
     - chmod +x certbot/update-pages.sh
