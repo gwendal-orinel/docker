@@ -115,6 +115,12 @@ docker build https://github.com/gwendal-orinel/docker.git#master:my_services_clo
 docker run -d --name=my_services_cloud -h my_services_cloud --restart=always -p 80:80 -p 8080:443 gorinel/my_services_cloud
 ```
 
+## Ftp server
+```
+docker build https://github.com/gwendal-orinel/docker.git#master:ftp -t gorinel/arm-vsftpd
+docker run -dit --name ftp -h ftp --net=host --restart=always -v /mnt/data1/camera/upload:/data/upload gorinel/arm-vsftpd
+```
+
 # Gitlab Runner
 ## X86_64 Runner
 - Install in Docker
